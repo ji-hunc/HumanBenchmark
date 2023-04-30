@@ -33,7 +33,7 @@ export default function Home() {
         onClick={() => navigate('/reactiontimetest')}
       >
         <h1 style={{ color: '#fff', fontSize: '80px', fontWeight: '400' }}>
-          Click to Start
+          Reaction Test
         </h1>
       </div>
       <h1>Other Games</h1>
@@ -64,12 +64,16 @@ export default function Home() {
           >
             <div
               style={{
-                backgroundColor: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '30px',
+                backgroundColor: '#ffffdd',
                 width: '100%',
                 height: '100%',
               }}
             >
-              Test1
+              Reaction Test
             </div>
           </div>
         </SwiperSlide>
@@ -80,12 +84,16 @@ export default function Home() {
           >
             <div
               style={{
-                backgroundColor: '#00ffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '30px',
+                backgroundColor: '#ffddff',
                 width: '100%',
                 height: '100%',
               }}
             >
-              Test2
+              Sequence Test
             </div>
           </div>{' '}
         </SwiperSlide>
