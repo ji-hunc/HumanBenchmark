@@ -38,37 +38,33 @@ export default function Matrix(props) {
     />
   ));
 
-  const genRandomSeq = () => {
-    let seq = '';
+  const generateSequence = () => {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let sequence = '';
+    let prevNumber = null;
+
     for (let i = 0; i < 30; i++) {
-      seq += Math.floor(Math.random() * (10 - 1)) + 1;
+      let randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+      if (randomNumber !== prevNumber) {
+        sequence += randomNumber.toString();
+        prevNumber = randomNumber;
+      } else {
+        i--;
+      }
     }
-    setQuestion(seq);
+    setQuestion(sequence);
   };
 
   const handleBlockClick = (event, index) => {
     const levelVar = level;
-    console.log(
-      'question: ',
-      question[clickCount],
-      question,
-      'index: ',
-      index,
-      'clickCount: ',
-      clickCount,
-    );
-    console.log(question);
-    console.log(question);
-    console.log(question);
     if (question[clickCount] != index) {
-      console.log('Game Over');
       background.current.style.backgroundColor = 'rgb(206, 38, 54)';
       setTimeout(() => {
         background.current.style.backgroundColor = 'rgb(43, 135, 209)';
       }, 500);
       // game over
       setGameOver(true);
-      genRandomSeq();
+      generateSequence();
       // alert('Game Over');
       // TODO GameOver시 처리할 프로세스 작성해야함
       return;
@@ -79,16 +75,13 @@ export default function Matrix(props) {
       event.target.style.backgroundColor = 'rgb(0, 0, 102)';
       event.target.style.opacity = 0.15;
     }, 300);
-    console.log('clickCount: ', clickCount, 'level: ', level);
     if (clickCount == level) {
-      console.log('You Win');
       // next level
       setLevel((state) => state + 1);
       setClickCount(0);
       background.current.style.backgroundColor = 'rgb(75, 219, 106)';
       setTimeout(() => {
         background.current.style.backgroundColor = 'rgb(43, 135, 209)';
-        console.log('levellevellevellevellevel', level);
         showQuestion(0, levelVar + 1);
       }, 500);
     } else {
@@ -97,27 +90,11 @@ export default function Matrix(props) {
   };
 
   const showQuestion = (index, levelVar) => {
-    console.log(question);
     squares.current.style.pointerEvents = 'none';
     if (index >= levelVar + 1) {
-      console.log('return');
       squares.current.style.pointerEvents = 'auto';
       return;
     }
-    console.log('index: ', index, 'level: ', level);
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@');
-    console.log(blockRefs.current[question[index]]);
-    console.log(
-      'question: ',
-      question,
-      'question[index]: ',
-      question[index],
-      'index: ',
-      index,
-      blockRefs.current[question[index]],
-      blockRefs.current[question[index]].style,
-    );
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@');
     blockRefs.current[question[index]].style.backgroundColor = '#fff';
     blockRefs.current[question[index]].style.opacity = 0.8;
     setTimeout(() => {
