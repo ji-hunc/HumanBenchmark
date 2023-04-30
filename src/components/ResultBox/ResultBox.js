@@ -7,7 +7,7 @@ export default function ResultBox(props) {
   return (
     <style.Container>
       <style.TestTitle>{props.testTitle}</style.TestTitle>
-      <style.TestResult>{props.testResult + ' ms'}</style.TestResult>
+      <style.TestResult>{props.testResult}</style.TestResult>
       <style.InfoText>register your score</style.InfoText>
       <style.ButtonBox>
         <style.Button background="rgb(255, 209, 84)">Save score</style.Button>

@@ -100,7 +100,7 @@ export default function ReactionTimeTest() {
             <ResultBox
               clickTryAgain={initTest}
               testTitle="Reaction Time"
-              testResult={totalScoreTime / 5}
+              testResult={totalScoreTime / 5 + ' ms'}
             />
           ) : (
             <div>

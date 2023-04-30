@@ -12,7 +12,9 @@ export default function Home() {
       <div onClick={() => navigate('/reactiontimetest')}>
         <TestCard title="test1" />
       </div>
-      <TestCard title="test2" />
+      <div onClick={() => navigate('/sequencememorytest')}>
+        <TestCard title="test2" />
+      </div>
       <TestCard title="test3" />
     </style.Container>
   );
