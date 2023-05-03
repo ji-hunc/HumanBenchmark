@@ -38,6 +38,7 @@ export default function Home() {
       </div>
       <h1>Other Games</h1>
       <Swiper
+        initialSlide={1}
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
@@ -95,10 +96,27 @@ export default function Home() {
             >
               Sequence Test
             </div>
-          </div>{' '}
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+        <div
+            style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}
+            onClick={() => navigate('/numbermemorytest')}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '30px',
+                backgroundColor: '#ddddff',
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              Number Memory Test
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
     </style.Container>

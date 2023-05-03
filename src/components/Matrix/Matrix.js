@@ -141,7 +141,7 @@ export default function Matrix(props) {
             setTimeout(() => startGame(0), 500);
           }}
         >
-          click to start!
+          Click to Start!
         </style.startLabel>
       )}
     </style.Container>

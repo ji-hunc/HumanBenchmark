@@ -11,7 +11,7 @@ export default function ReactionTimeTest() {
   const [randomTimer, setRandomTimer] = useState(0);
   const [startTime, setStartTime] = useState(0);
   // 결과 시간 기록
-  const [result, setResult] = useState('click to start!');
+  const [result, setResult] = useState('Click to Start!');
   // 테스트 진행 관련
   const [tryCount, setTrycount] = useState('');
   const [isTesting, setIsTesting] = useState(false);
