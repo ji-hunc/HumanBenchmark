@@ -22,7 +22,7 @@ export default function Login() {
       return;
     } else {
       axios
-        .post('http://192.168.219.104:8000/login/', { id: id, pw: pw })
+        .post('http://humanstats:3000/login/', { id: id, pw: pw })
         .then((Response) => {
           console.log(Response.data);
           if (

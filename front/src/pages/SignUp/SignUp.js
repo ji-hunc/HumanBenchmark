@@ -27,7 +27,7 @@ export default function SignUp() {
       } else {
         // Request to server here
         axios
-          .post('http://192.168.219.104:8000/signup/', { id: id, pw: pw })
+          .post('http://humanstats:3000/signup/', { id: id, pw: pw })
           .then((Response) => {
             console.log(Response.data);
             if (Response.data === 'already Exist!') {

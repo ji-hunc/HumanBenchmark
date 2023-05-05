@@ -4,7 +4,7 @@ import axios from 'axios';
 export default {
   saveScore(gameName, userId, score) {
     axios
-      .post('http://192.168.219.104:8000/postScore/', {
+      .post('http://humanstats:3000/postScore/', {
         gameName: gameName,
         id: userId,
         score: score,
