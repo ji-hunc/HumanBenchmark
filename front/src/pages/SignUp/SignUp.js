@@ -27,7 +27,10 @@ export default function SignUp() {
       } else {
         // Request to server here
         axios
-          .post('https://humanstats:3000/signup/', { id: id, pw: pw })
+          .post(
+            'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app/signup/',
+            { id: id, pw: pw },
+          )
           .then((Response) => {
             console.log(Response.data);
             if (Response.data === 'already Exist!') {
