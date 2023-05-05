@@ -1,20 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../ResultBox/ResultBox';
+import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import LoginState from '../../States/LoginState';
+import Api from '../../Api/Api';
 
 export default function Matrix(props) {
-  const [answer, setAnswer] = useState('');
+  const userInfo = useRecoilValue(LoginState);
+
   const [level, setLevel] = useState(0);
   const [clickCount, setClickCount] = useState(0);
   const [question, setQuestion] = useState(props.numbers);
   const [gameOver, setGameOver] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
   const background = props.background;
+
   const squares = useRef();
   const blockRefs = useRef([]);
-  // let question = '';
 
   const row1 = [1, 2, 3].map((index) => (
     <style.Square
@@ -123,6 +128,9 @@ export default function Matrix(props) {
           testTitle="SqeuenceTest"
           testResult={level + ' Level'}
           clickTryAgain={initTest}
+          saveScore={() =>
+            Api.saveScore('SequenceMemory', userInfo.userId, level)
+          }
         />
       ) : isTesting ? (
         <style.Squares ref={squares}>

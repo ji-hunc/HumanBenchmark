@@ -1,12 +1,14 @@
 import { useState, useRef } from 'react';
 import React from 'react';
 import * as style from './styles';
-import { useNavigate } from 'react-router-dom';
 import ResultBox from '../../components/ResultBox/ResultBox';
 import AnswerCheck from '../../components/AnswerCheck/AnswerCheck';
+import { useRecoilValue } from 'recoil';
+import Api from '../../Api/Api';
+import LoginState from '../../States/LoginState';
 
 export default function NumberMemoryTest() {
-  const navigate = useNavigate();
+  const userInfo = useRecoilValue(LoginState);
   const [question, setQuestion] = useState('');
   const [isTesting, setIsTesting] = useState(false);
   const [isTimeOver, setIsTimeOver] = useState(false);
@@ -25,8 +27,6 @@ export default function NumberMemoryTest() {
     setIsGameOver(false);
     setLevel(0);
   };
-
-  const nextGame = () => {};
 
   const updateAnswer = (event) => {
     setAnswer(event.target.value);
@@ -93,6 +93,9 @@ export default function NumberMemoryTest() {
             clickTryAgain={startGame}
             testTitle="NumberMemory Test"
             testResult={level + ' Level'}
+            saveScore={() =>
+              Api.saveScore('NumberMemory', userInfo.userId, level)
+            }
           />
         </div>
       ) : (
