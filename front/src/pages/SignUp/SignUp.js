@@ -40,7 +40,12 @@ export default function SignUp() {
               navigate('/login');
             }
           })
-          .catch((Error) => console.log(Error));
+          .catch((Error) => {
+            console.log(Error);
+            console.log(Error.response);
+            console.log(Error.response.data);
+            console.log(Error.response.data.error);
+          });
         // alert('회원가입 완료~');
       }
     }

@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const port = 3000;
 
-local db 접속2
+// local db 접속2
 var db = mysql.createConnection({
   host: 'mariadb',
   user: 'root',
