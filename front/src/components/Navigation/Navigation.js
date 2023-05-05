@@ -25,7 +25,7 @@ export default function Navigation(props) {
             window.location.reload();
           }}
         >
-          Human Benchmark
+          Human Stats
         </style.Title>
       </style.TitleWrapper>
       <style.ButtonWrapper>
