@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../ResultBox/ResultBox';
+import axios from 'axios';
 
 export default function Matrix(props) {
   const [answer, setAnswer] = useState('');
@@ -116,6 +117,18 @@ export default function Matrix(props) {
     setIsTesting(false);
   };
 
+  const saveScore = () => {
+    axios
+      .post('http://192.168.219.104:8000/post/', {
+        id: 'doo620',
+        score: level,
+      })
+      .then(function (Response) {
+        console.log(Response);
+      })
+      .catch((Error) => console.log(Error));
+  };
+
   return (
     <style.Container>
       {gameOver ? (
@@ -123,6 +136,7 @@ export default function Matrix(props) {
           testTitle="SqeuenceTest"
           testResult={level + ' Level'}
           clickTryAgain={initTest}
+          saveScore={saveScore}
         />
       ) : isTesting ? (
         <style.Squares ref={squares}>
