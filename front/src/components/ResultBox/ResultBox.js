@@ -10,7 +10,9 @@ export default function ResultBox(props) {
       <style.TestResult>{props.testResult}</style.TestResult>
       <style.InfoText>register your score</style.InfoText>
       <style.ButtonBox>
-        <style.Button background="rgb(255, 209, 84)">Save score</style.Button>
+        <style.Button onClick={props.saveScore} background="rgb(255, 209, 84)">
+          Save score
+        </style.Button>
         <style.Button
           onClick={props.clickTryAgain}
           background="rgba(255, 255, 255, 0.5)"

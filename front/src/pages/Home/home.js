@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import * as style from './styles';
 import TestCard from '../../components/TestCard/TestCard';
 import { useNavigate } from 'react-router-dom';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRecoilValue } from 'recoil';
+import LoginState from '../../States/LoginState';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -18,6 +19,7 @@ import { EffectCoverflow, Pagination } from 'swiper';
 
 export default function Home() {
   const navigate = useNavigate();
+  const loginInfo = useRecoilValue(LoginState);
 
   return (
     <style.Container>
@@ -99,7 +101,7 @@ export default function Home() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-        <div
+          <div
             style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}
             onClick={() => navigate('/numbermemorytest')}
           >
