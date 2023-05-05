@@ -22,7 +22,7 @@ export default function Login() {
       return;
     } else {
       axios
-        .post('http://humanstats:3000/login/', { id: id, pw: pw })
+        .post('https://humanstats:3000/login/', { id: id, pw: pw })
         .then((Response) => {
           console.log(Response.data);
           if (
