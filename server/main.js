@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const port = 8000;
 
-// local db 접속
+// local db 접속2
 var db = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
