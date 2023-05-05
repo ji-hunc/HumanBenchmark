@@ -1,21 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../ResultBox/ResultBox';
 import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import LoginState from '../../States/LoginState';
+import Api from '../../Api/Api';
 
 export default function Matrix(props) {
-  const [answer, setAnswer] = useState('');
+  const userInfo = useRecoilValue(LoginState);
+
   const [level, setLevel] = useState(0);
   const [clickCount, setClickCount] = useState(0);
   const [question, setQuestion] = useState(props.numbers);
   const [gameOver, setGameOver] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
   const background = props.background;
+
   const squares = useRef();
   const blockRefs = useRef([]);
-  // let question = '';
 
   const row1 = [1, 2, 3].map((index) => (
     <style.Square
@@ -117,18 +121,6 @@ export default function Matrix(props) {
     setIsTesting(false);
   };
 
-  const saveScore = () => {
-    axios
-      .post('http://192.168.219.104:8000/post/', {
-        id: 'doo620',
-        score: level,
-      })
-      .then(function (Response) {
-        console.log(Response);
-      })
-      .catch((Error) => console.log(Error));
-  };
-
   return (
     <style.Container>
       {gameOver ? (
@@ -136,7 +128,9 @@ export default function Matrix(props) {
           testTitle="SqeuenceTest"
           testResult={level + ' Level'}
           clickTryAgain={initTest}
-          saveScore={saveScore}
+          saveScore={() =>
+            Api.saveScore('SequenceMemory', userInfo.userId, level)
+          }
         />
       ) : isTesting ? (
         <style.Squares ref={squares}>

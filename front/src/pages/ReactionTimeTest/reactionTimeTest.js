@@ -2,8 +2,12 @@ import { useState } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
+import { useRecoilValue } from 'recoil';
+import Api from '../../Api/Api';
+import LoginState from '../../States/LoginState';
 
 export default function ReactionTimeTest() {
+  const userInfo = useRecoilValue(LoginState);
   // 배경색 관련
   const [colorState, setColorState] = useState(1);
   const [color, setColor] = useState('rgb(43, 135, 209)');
@@ -101,6 +105,13 @@ export default function ReactionTimeTest() {
               clickTryAgain={initTest}
               testTitle="Reaction Time"
               testResult={totalScoreTime / 5 + ' ms'}
+              saveScore={() =>
+                Api.saveScore(
+                  'ReactionTime',
+                  userInfo.userId,
+                  totalScoreTime / 5,
+                )
+              }
             />
           ) : (
             <div>
