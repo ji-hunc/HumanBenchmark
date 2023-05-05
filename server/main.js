@@ -7,15 +7,15 @@ const mysql = require('mysql');
 const port = 3000;
 
 // local db 접속2
-var db = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'wlgns620',
-  database: 'HumanBenchmark',
-  port: '3306',
-});
+// var db = mysql.createConnection({
+//   host: '127.0.0.1',
+//   user: 'root',
+//   password: 'wlgns620',
+//   database: 'HumanBenchmark',
+//   port: '3306',
+// });
 
-db.connect();
+// db.connect();
 
 app.use(cors());
 app.use(bodyParser.json());
