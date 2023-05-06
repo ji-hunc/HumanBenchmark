@@ -22,13 +22,12 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.label`
-  padding: 20px;
-  font-size: 40px;
+  font-size: 30px;
   cursor: pointer;
 `;
 
 export const ButtonWrapper = styled.div`
-  margin: 20px;
+  margin-right: 20px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -39,18 +38,18 @@ export const ButtonWrapper = styled.div`
 
 export const LoginButton = styled.label`
   cursor: pointer;
-  font-size: 20px;
-  margin-right: 20px;
+  font-size: 18px;
+  padding: 12px 30px;
 `;
 
 export const SignUpButton = styled.button`
+  cursor: pointer;
+  font-size: 15px;
   margin-right: 20px;
   height: 100%;
-  font-size: 20px;
-  padding: 12px 30px;
+  padding: 10px 15px;
   background: rgb(255, 209, 84);
   font-weight: bold;
-  cursor: pointer;
   color: black;
   border: none;
 `;

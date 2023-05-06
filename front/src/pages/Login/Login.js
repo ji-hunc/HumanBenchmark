@@ -13,6 +13,12 @@ export default function Login() {
 
   const setLoginState = useSetRecoilState(LoginState);
 
+  const handleOnKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      requestLogin(); // Enter 입력이 되면 클릭 이벤트 실행
+    }
+  };
+
   const requestLogin = () => {
     const id = userName.current.value;
     const pw = password.current.value;
@@ -59,10 +65,16 @@ export default function Login() {
     <style.Container>
       <style.InnerContainer>
         <style.Title>Login</style.Title>
-        <style.description>UserName</style.description>
-        <style.Input ref={userName} />
-        <style.description>Password</style.description>
-        <style.Input type="password" ref={password} />
+        <style.InputWrapper>
+          <style.description>UserName</style.description>
+          <style.Input ref={userName} />
+          <style.description>Password</style.description>
+          <style.Input
+            onKeyPress={handleOnKeyPress}
+            type="password"
+            ref={password}
+          />
+        </style.InputWrapper>
         <style.SignUpButton onClick={requestLogin}>Login</style.SignUpButton>
       </style.InnerContainer>
     </style.Container>

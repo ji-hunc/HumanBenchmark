@@ -29,7 +29,6 @@ export const Title = styled.label`
 `;
 
 export const description = styled.label`
-  width: 100%;
   margin: 0px 0px 5px;
   padding: 0;
   font-weight: 400;
@@ -56,9 +55,17 @@ export const SignUpButton = styled.button`
   border-right: none;
   border-left: none;
   border-image: initial;
+  margin-top: 20px;
   cursor: pointer;
   padding: 12px;
   background: rgb(77, 155, 240);
   border-bottom: 4px solid rgb(30, 129, 236);
   color: white !important;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 `;
