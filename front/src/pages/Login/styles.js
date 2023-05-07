@@ -11,11 +11,11 @@ export const Container = styled.div`
 `;
 
 export const InnerContainer = styled.div`
+  max-width: 500px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  max-width: 400px;
-  margin: 0px auto;
 `;
 
 export const Title = styled.label`
@@ -31,13 +31,17 @@ export const Title = styled.label`
 export const Input = styled.input`
   padding: 10px;
   border: 1px solid rgb(204, 204, 204);
-  width: 400px;
+  width: 100%;
   height: 60px;
   display: block;
   box-sizing: border-box;
   margin: 0;
   font-size: 20px;
   border-radius: 10px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+  }
 `;
 
 export const SignUpButton = styled.button`
@@ -56,9 +60,14 @@ export const SignUpButton = styled.button`
   border-bottom: none;
   color: white !important;
   border-radius: 10px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 export const InputWrapper = styled.div`
+  gap: 5px;
   display: flex;
   flex-direction: column;
   justify-content: start;

@@ -15,7 +15,6 @@ export const Container = styled.div`
 
 export const Title = styled.label`
   font-size: 40px;
-  margin-bottom: 30px;
 `;
 
 export const RowWrapper = styled.div`
@@ -38,7 +37,7 @@ export const RankCard = styled.div`
       : '#ffffff'};
   padding: 5px 0px;
   display: grid;
-  width: 70%;
+  width: 50%;
   grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
   &:last-child {
@@ -49,14 +48,30 @@ export const RankCard = styled.div`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const RankNumber = styled.label`
   font-size: 25px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 export const RankUserName = styled.label`
   font-size: 25px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 export const RankScore = styled.label`
   font-size: 25px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;

@@ -30,12 +30,12 @@ export default function Navigation(props) {
       </style.TitleWrapper>
       <style.ButtonWrapper>
         {loginInfo.userId ? (
-          <div>
+          <div style={{ display: 'flex', alignItems: 'baseline' }}>
             <style.LoginButton>{loginInfo.userId}</style.LoginButton>
             <style.LoginButton onClick={logOut}>Logout</style.LoginButton>
           </div>
         ) : (
-          <div>
+          <div style={{ display: 'flex', alignItems: 'baseline' }}>
             <style.LoginButton onClick={() => navigate('/login')}>
               Login
             </style.LoginButton>

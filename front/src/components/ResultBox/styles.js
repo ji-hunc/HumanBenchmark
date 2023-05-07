@@ -14,9 +14,14 @@ export const TestTitle = styled.label`
 export const TestResult = styled.label`
   font-size: 80px;
   font-weight: 400;
+
+  @media screen and (max-width: 480px) {
+    font-size: 60px;
+  }
 `;
 
 export const InfoText = styled.label`
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 400;
 `;
@@ -26,7 +31,7 @@ export const ButtonBox = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 export const Button = styled.button`
   font-size: 20px;
@@ -37,4 +42,8 @@ export const Button = styled.button`
   color: rgb(51, 51, 51) !important;
   border: none;
   border-radius: 10px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 17px;
+  }
 `;
