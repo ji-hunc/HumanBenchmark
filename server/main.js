@@ -36,8 +36,6 @@ app.get('/rank/:gameName', (req, res) => {
         console.log('DB QUERY ERROR');
         console.log(error);
       }
-      console.log('GET RANK');
-      console.log(result);
       res.send(result);
     },
   );
