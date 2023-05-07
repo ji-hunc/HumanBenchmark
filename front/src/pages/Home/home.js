@@ -30,7 +30,7 @@ export default function Home() {
           justifyContent: 'center',
           width: '100%',
           height: '500px',
-          backgroundColor: 'rgb(43, 135, 209)',
+          backgroundColor: 'rgb(44, 63, 88)',
         }}
         onClick={() => navigate('/reactiontimetest')}
       >
@@ -41,7 +41,7 @@ export default function Home() {
       <h1>Other Games</h1>
       <Swiper
         initialSlide={1}
-        effect={'coverflow'}
+        // effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
@@ -59,7 +59,7 @@ export default function Home() {
         <SwiperSlide>
           <div
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: 'rgb(238, 238, 238)',
               width: '100%',
               height: '100%',
             }}
@@ -71,9 +71,10 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '30px',
-                backgroundColor: '#ffffdd',
+                backgroundColor: 'rgb(140, 140, 140)',
                 width: '100%',
                 height: '100%',
+                borderRadius: '20px',
               }}
             >
               Reaction Test
@@ -82,7 +83,11 @@ export default function Home() {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}
+            style={{
+              backgroundColor: 'rgb(238, 238, 238)',
+              width: '100%',
+              height: '100%',
+            }}
             onClick={() => navigate('/sequencememorytest')}
           >
             <div
@@ -91,9 +96,10 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '30px',
-                backgroundColor: '#ffddff',
+                backgroundColor: 'rgb(140, 140, 90)',
                 width: '100%',
                 height: '100%',
+                borderRadius: '20px',
               }}
             >
               Sequence Test
@@ -102,7 +108,11 @@ export default function Home() {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}
+            style={{
+              backgroundColor: 'rgb(238, 238, 238)',
+              width: '100%',
+              height: '100%',
+            }}
             onClick={() => navigate('/numbermemorytest')}
           >
             <div
@@ -111,12 +121,38 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '30px',
-                backgroundColor: '#ddddff',
+                backgroundColor: 'rgb(140, 90, 140)',
                 width: '100%',
                 height: '100%',
+                borderRadius: '20px',
               }}
             >
               Number Memory Test
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div
+            style={{
+              backgroundColor: 'rgb(238, 238, 238)',
+              width: '100%',
+              height: '100%',
+            }}
+            onClick={() => navigate('/alphabetmemorytest')}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '30px',
+                backgroundColor: 'rgb(90, 140, 140)',
+                width: '100%',
+                height: '100%',
+                borderRadius: '20px',
+              }}
+            >
+              Alphabet Memory Test
             </div>
           </div>
         </SwiperSlide>

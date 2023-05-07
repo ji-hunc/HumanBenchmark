@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e6e8f4;
+  background-color: rgb(238, 238, 238);
   width: 100%;
   height: 500px;
 `;
@@ -58,8 +58,8 @@ export const SignUpButton = styled.button`
   margin-top: 20px;
   cursor: pointer;
   padding: 12px;
-  background: rgb(77, 155, 240);
-  border-bottom: 4px solid rgb(30, 129, 236);
+  background: rgb(27, 152, 137);
+  border-bottom: none;
   color: white !important;
 `;
 

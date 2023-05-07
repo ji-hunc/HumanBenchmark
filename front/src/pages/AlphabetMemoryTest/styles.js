@@ -18,12 +18,11 @@ export const Question = styled.label`
 export const Button = styled.button`
   font-size: 20px;
   padding: 12px 30px;
-  background: rgb(255, 213, 97);
+  background: rgb(255, 209, 84);
   font-weight: bold;
   cursor: pointer;
-  color: rgb(51, 51, 51);
+  color: rgb(51, 51, 51) !important;
   border: none;
-  border-radius: 10px;
 `;
 
 export const Input = styled.input`

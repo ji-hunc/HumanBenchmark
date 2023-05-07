@@ -8,7 +8,7 @@ import Api from '../../Api/Api';
 import LoginState from '../../States/LoginState';
 import Ranking from '../../components/Ranking/Ranking';
 
-export default function NumberMemoryTest() {
+export default function AlphabetMemoryTest() {
   const userInfo = useRecoilValue(LoginState);
   const [question, setQuestion] = useState('');
   const [isTesting, setIsTesting] = useState(false);
@@ -32,7 +32,8 @@ export default function NumberMemoryTest() {
   };
 
   const updateAnswer = (event) => {
-    setAnswer(event.target.value);
+    setAnswer(event.target.value.toUpperCase());
+    event.target.value = event.target.value.toUpperCase();
   };
 
   const checkAnswer = (event) => {
@@ -62,7 +63,34 @@ export default function NumberMemoryTest() {
   };
 
   const getRandomSequence = (length) => {
-    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const numbers = [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+      'J',
+      'K',
+      'L',
+      'M',
+      'N',
+      'O',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z',
+    ];
     let sequence = '';
 
     for (let i = 0; i < length; i++) {
@@ -95,11 +123,11 @@ export default function NumberMemoryTest() {
             <AnswerCheck correctAnswer={question} answer={answer} />
             <ResultBox
               clickTryAgain={startGame}
-              testTitle="NumberMemory Test"
+              testTitle="AlphabetMemory Test"
               testResult={level + ' Level'}
               saveScore={() =>
                 Api.saveScore(
-                  'NumberMemory',
+                  'AlphabetMemory',
                   userInfo.userId,
                   level,
                   isRegistered,
@@ -120,7 +148,7 @@ export default function NumberMemoryTest() {
                 {isTimeOver ? (
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <style.questionLabel>
-                      What was the Numbers?
+                      What was the Alphabets?
                     </style.questionLabel>
                     <style.Input
                       ref={input}
@@ -137,7 +165,7 @@ export default function NumberMemoryTest() {
           </div>
         )}
       </style.Container>
-      <Ranking gameName={'NumberMemory'} />
+      <Ranking gameName={'AlphabetMemory'} />
     </div>
   );
 }

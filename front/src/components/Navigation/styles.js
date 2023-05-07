@@ -4,7 +4,7 @@ export const Container = styled.div`
   padding: 20px 0px;
   display: flex;
   flex-direction: row;
-  background-color: #2c5582;
+  background-color: #2c3f58;
   color: white;
   width: 100%;
   height: 100%;
@@ -25,6 +25,7 @@ export const Title = styled.label`
   margin-left: 20px;
   font-size: 30px;
   cursor: pointer;
+  font-weight: 500;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -41,6 +42,7 @@ export const LoginButton = styled.label`
   cursor: pointer;
   font-size: 18px;
   padding: 12px 30px;
+  font-weight: 500;
 `;
 
 export const SignUpButton = styled.button`
@@ -49,8 +51,9 @@ export const SignUpButton = styled.button`
   margin-right: 20px;
   height: 100%;
   padding: 10px 15px;
-  background: rgb(255, 209, 84);
+  background: #ffd561;
   font-weight: bold;
   color: black;
   border: none;
+  border-radius: 10px;
 `;

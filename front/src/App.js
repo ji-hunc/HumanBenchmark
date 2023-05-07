@@ -11,6 +11,7 @@ import Login from './pages/Login/Login';
 import Navigation from './components/Navigation/Navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import LoginState from './States/LoginState';
+import AlphabetMemoryTest from './pages/AlphabetMemoryTest/AlphabetMemoryTest';
 
 function App() {
   const setLoginState = useSetRecoilState(LoginState);
@@ -42,6 +43,7 @@ function App() {
         <Route path="/reactiontimetest" element={<ReactionTimeTest />} />
         <Route path="/sequencememorytest" element={<SequenceMemoryTest />} />
         <Route path="/numbermemorytest" element={<NumberMemoryTest />} />
+        <Route path="/alphabetmemorytest" element={<AlphabetMemoryTest />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
