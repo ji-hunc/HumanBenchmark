@@ -16,6 +16,7 @@ export default function Matrix(props) {
   const [question, setQuestion] = useState(props.numbers);
   const [gameOver, setGameOver] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const background = props.background;
 
   const squares = useRef();
@@ -63,9 +64,9 @@ export default function Matrix(props) {
   const handleBlockClick = (event, index) => {
     const levelVar = level;
     if (question[clickCount] != index) {
-      background.current.style.backgroundColor = 'rgb(206, 38, 54)';
+      background.current.style.backgroundColor = 'rgb(234, 83, 83)';
       setTimeout(() => {
-        background.current.style.backgroundColor = 'rgb(43, 135, 209)';
+        background.current.style.backgroundColor = 'rgb(44, 63, 88)';
       }, 500);
       // game over
       setGameOver(true);
@@ -74,19 +75,17 @@ export default function Matrix(props) {
       // TODO GameOver시 처리할 프로세스 작성해야함
       return;
     }
-    event.target.style.backgroundColor = '#fff';
-    event.target.style.opacity = 0.8;
+    event.target.style.backgroundColor = 'rgb(242,193,80)';
     setTimeout(() => {
-      event.target.style.backgroundColor = 'rgb(0, 0, 102)';
-      event.target.style.opacity = 0.15;
+      event.target.style.backgroundColor = 'rgb(242, 242, 242)';
     }, 300);
     if (clickCount == level) {
       // next level
       setLevel((state) => state + 1);
       setClickCount(0);
-      background.current.style.backgroundColor = 'rgb(75, 219, 106)';
+      background.current.style.backgroundColor = 'rgb(27, 152, 137)';
       setTimeout(() => {
-        background.current.style.backgroundColor = 'rgb(43, 135, 209)';
+        background.current.style.backgroundColor = 'rgb(44, 63, 88)';
         showQuestion(0, levelVar + 1);
       }, 500);
     } else {
@@ -100,12 +99,11 @@ export default function Matrix(props) {
       squares.current.style.pointerEvents = 'auto';
       return;
     }
-    blockRefs.current[question[index]].style.backgroundColor = '#fff';
-    blockRefs.current[question[index]].style.opacity = 0.8;
+    blockRefs.current[question[index]].style.backgroundColor =
+      'rgb(242,193,80)';
     setTimeout(() => {
       blockRefs.current[question[index]].style.backgroundColor =
-        'rgb(0, 0, 102)';
-      blockRefs.current[question[index]].style.opacity = 0.15;
+        'rgb(242, 242, 242)';
       showQuestion(index + 1, levelVar);
     }, 500);
   };
@@ -119,6 +117,7 @@ export default function Matrix(props) {
     setClickCount(0);
     setGameOver(false);
     setIsTesting(false);
+    setIsRegistered(false);
   };
 
   return (
@@ -129,12 +128,20 @@ export default function Matrix(props) {
           testResult={level + ' Level'}
           clickTryAgain={initTest}
           saveScore={() =>
-            Api.saveScore('SequenceMemory', userInfo.userId, level)
+            Api.saveScore(
+              'SequenceMemory',
+              userInfo.userId,
+              level,
+              isRegistered,
+              setIsRegistered,
+            )
           }
         />
       ) : isTesting ? (
         <style.Squares ref={squares}>
-          <h1 style={{ color: '#ffffff' }}>LEVEL {level + 1} </h1>
+          <h1 style={{ color: '#ffffff', margin: '0px' }}>
+            LEVEL {level + 1}{' '}
+          </h1>
 
           <style.SquareRow>{row1}</style.SquareRow>
           <style.SquareRow>{row2}</style.SquareRow>

@@ -33,8 +33,7 @@ export const Square = styled.div`
   width: 120px;
   height: 120px;
   cursor: pointer;
-  background-color: rgb(0, 0, 102);
-  opacity: 0.15;
+  background-color: rgb(242, 242, 242);
   transform: scale(1, 1);
 `;
 

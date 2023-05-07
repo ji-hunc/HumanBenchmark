@@ -31,11 +31,10 @@ export const ButtonBox = styled.div`
 export const Button = styled.button`
   font-size: 20px;
   padding: 12px 30px;
-  ${'' /* background: rgb(255, 209, 84); */}
   background: ${(props) => props.background};
-  ${'' /* background: rgba(255, 255, 255, 0.5); */}
   font-weight: bold;
   cursor: pointer;
   color: rgb(51, 51, 51) !important;
   border: none;
+  border-radius: 10px;
 `;

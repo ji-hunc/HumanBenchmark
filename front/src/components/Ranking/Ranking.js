@@ -19,8 +19,8 @@ export default function Ranking(props) {
   return (
     <style.Container>
       <style.Title>Ranking</style.Title>
-      <RankingRow rank={'Rank'} userId={'UserName'} score={'Score'} />
       <style.RowWrapper>
+        <RankingRow rank={'Rank'} userId={'UserName'} score={'Score'} />
         {rankData.map((item, index) => (
           <RankingRow
             key={index + 1}

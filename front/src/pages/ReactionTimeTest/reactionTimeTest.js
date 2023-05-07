@@ -11,7 +11,7 @@ export default function ReactionTimeTest() {
   const userInfo = useRecoilValue(LoginState);
   // 배경색 관련
   const [colorState, setColorState] = useState(1);
-  const [color, setColor] = useState('rgb(43, 135, 209)');
+  const [color, setColor] = useState('rgb(44, 63, 88)');
   // 타이머 ref state, 시간 기록
   const [randomTimer, setRandomTimer] = useState(0);
   const [startTime, setStartTime] = useState(0);
@@ -24,11 +24,12 @@ export default function ReactionTimeTest() {
   const [totalScoreTime, setTotalScoreTime] = useState(0);
   // 테스트 종료 후 배경 커서 상태 변경
   const [cursor, setCursor] = useState('pointer');
+  const [isRegistered, setIsRegistered] = useState(false);
 
   // 배경색
-  const red = 'rgb(206, 38, 54)';
-  const green = 'rgb(75, 219, 106)';
-  const blue = 'rgb(43, 135, 209)';
+  const red = 'rgb(234, 83, 83)';
+  const green = 'rgb(27, 152, 137)';
+  const blue = 'rgb(44, 63, 88)';
 
   // 기다리는 시간의 최대, 최솟값
   const ranMax = 5000;
@@ -51,6 +52,7 @@ export default function ReactionTimeTest() {
     setTotalScoreTime(0);
     setCursor('pointer');
     setResult('click to start!');
+    setIsRegistered(false);
   };
 
   const handleClick = () => {
@@ -112,6 +114,8 @@ export default function ReactionTimeTest() {
                     'ReactionTime',
                     userInfo.userId,
                     totalScoreTime / 5,
+                    isRegistered,
+                    setIsRegistered,
                   )
                 }
               />

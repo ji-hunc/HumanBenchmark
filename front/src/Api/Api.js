@@ -5,9 +5,13 @@ const reqUrl = 'http://192.168.219.104:8000';
 // const reqUrl = 'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app';
 
 export default {
-  saveScore(gameName, userId, score) {
+  saveScore(gameName, userId, score, isRegistered, setIsRegistered) {
     if (userId === null) {
       alert('로그인후 시도해주세요.');
+      return;
+    }
+    if (isRegistered === true) {
+      alert('이미 등록되었습니다.');
       return;
     }
     axios
@@ -17,6 +21,7 @@ export default {
         score: score,
       })
       .then(function (Response) {
+        setIsRegistered(true);
         alert('등록완료!');
       })
       .catch((Error) => console.log(Error));
