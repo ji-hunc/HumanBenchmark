@@ -34,9 +34,7 @@ export default function Home() {
         }}
         onClick={() => navigate('/reactiontimetest')}
       >
-        <h1 style={{ color: '#fff', fontSize: '80px', fontWeight: '400' }}>
-          Reaction Time
-        </h1>
+        <style.HomeTitle>Reaction Time</style.HomeTitle>
       </div>
       <h1>Other Games</h1>
       <style.GameContainer>

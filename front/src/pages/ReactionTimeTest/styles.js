@@ -20,13 +20,13 @@ export const MainText = styled.label`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${
-    '' /* width: 100%;
-  height: 100%; */
-  }
   font-weight: 500;
   font-size: 80px;
   color: white;
+
+  @media screen and (max-width: 480px) {
+    font-size: 40px;
+  }
 `;
 
 export const SubText = styled.label`
@@ -37,4 +37,8 @@ export const SubText = styled.label`
   font-weight: 300;
   font-size: 30px;
   color: white;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
