@@ -46,7 +46,7 @@ app.post('/postScore', (req, res) => {
   const now = new Date();
   const utcNow = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
   const koreaTimeDiff = 9 * 60 * 60 * 1000;
-  const koreaNow = new Date(utcNow + 2 * koreaTimeDiff);
+  const koreaNow = new Date(utcNow + koreaTimeDiff);
   const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
@@ -67,7 +67,7 @@ app.post('/signup', (req, res) => {
   const now = new Date();
   const utcNow = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
   const koreaTimeDiff = 9 * 60 * 60 * 1000;
-  const koreaNow = new Date(utcNow + 2 * koreaTimeDiff);
+  const koreaNow = new Date(utcNow + koreaTimeDiff);
   const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
@@ -93,7 +93,7 @@ app.post('/login', (req, res) => {
   const now = new Date();
   const utcNow = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
   const koreaTimeDiff = 9 * 60 * 60 * 1000;
-  const koreaNow = new Date(utcNow + 2 * koreaTimeDiff);
+  const koreaNow = new Date(utcNow + koreaTimeDiff);
   const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
