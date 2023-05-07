@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home/home';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ReactionTimeTest from './pages/ReactionTimeTest/reactionTimeTest';
 import SequenceMemoryTest from './pages/SequenceMemoryTest/SequenceMemoryTest';
 import NumberMemoryTest from './pages/NumberMemoryTest/numberMemoryTest';
@@ -12,7 +12,6 @@ import Navigation from './components/Navigation/Navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import LoginState from './States/LoginState';
 import AlphabetMemoryTest from './pages/AlphabetMemoryTest/AlphabetMemoryTest';
-import ScrollToTop from './ScrolltoTop/ScrollToTop';
 
 function App() {
   const setLoginState = useSetRecoilState(LoginState);
@@ -39,7 +38,6 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reactiontimetest" element={<ReactionTimeTest />} />
