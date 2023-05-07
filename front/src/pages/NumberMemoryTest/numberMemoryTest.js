@@ -127,17 +127,20 @@ export default function NumberMemoryTest() {
             ) : (
               <div>
                 {isTimeOver ? (
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <style.AnswerForm>
                     <style.questionLabel>
                       What was the Numbers?
                     </style.questionLabel>
                     <style.Input
+                      type="number"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
                       ref={input}
                       onChange={updateAnswer}
                       onKeyPress={handleOnKeyPress}
                     />
                     <style.Button onClick={checkAnswer}>Submit</style.Button>
-                  </div>
+                  </style.AnswerForm>
                 ) : (
                   <style.Question>{question}</style.Question>
                 )}

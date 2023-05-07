@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
-  justify-content: center;
   width: 100%;
+  justify-content: center;
   align-items: center;
 `;
 
 export const Squares = styled.div`
+  max-width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,10 +17,10 @@ export const Squares = styled.div`
 `;
 
 export const SquareRow = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   gap: 15px;
 `;
 
@@ -35,6 +35,11 @@ export const Square = styled.div`
   cursor: pointer;
   background-color: rgb(242, 242, 242);
   transform: scale(1, 1);
+
+  @media screen and (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 export const startLabel = styled.div`
@@ -46,4 +51,8 @@ export const startLabel = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+
+  @media screen and (max-width: 480px) {
+    font-size: 40px;
+  }
 `;

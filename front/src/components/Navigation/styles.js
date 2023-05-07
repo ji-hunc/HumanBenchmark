@@ -12,6 +12,10 @@ export const Container = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
+
+  @media screen and (max-width: 480px) {
+    padding: 10px 0px;
+  }
 `;
 export const TitleWrapper = styled.div`
   width: 100%;
@@ -26,6 +30,10 @@ export const Title = styled.label`
   font-size: 30px;
   cursor: pointer;
   font-weight: 500;
+
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -43,6 +51,10 @@ export const LoginButton = styled.label`
   font-size: 18px;
   padding: 12px 30px;
   font-weight: 500;
+
+  @media screen and (max-width: 480px) {
+    padding: 10px 15px;
+  }
 `;
 
 export const SignUpButton = styled.button`
@@ -56,4 +68,9 @@ export const SignUpButton = styled.button`
   color: black;
   border: none;
   border-radius: 10px;
+
+  @media screen and (max-width: 480px) {
+    padding: 10px 15px;
+    margin-right: 0px;
+  }
 `;

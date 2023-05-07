@@ -13,6 +13,18 @@ export const Container = styled.div`
 export const Question = styled.label`
   font-size: 100px;
   color: white;
+
+  @media screen and (max-width: 480px) {
+    font-size: 50px;
+  }
+`;
+
+export const AnswerForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`
@@ -34,23 +46,27 @@ export const Input = styled.input`
   border-radius: 3px;
   text-align: center;
   font-size: 48px;
-  ${'' /* width: 100%; */}
   outline-style: none;
   box-shadow: none;
   border-color: transparent;
   padding: 10px;
   border: 1px solid rgb(204, 204, 204);
+
+  @media screen and (max-width: 480px) {
+    max-width: 300px;
+    font-size: 32px;
+  }
 `;
 
 export const startLabel = styled.div`
-  font-weight: 500;
   font-size: 80px;
+  font-weight: 500;
   color: white;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+
+  @media screen and (max-width: 480px) {
+    font-size: 40px;
+  }
 `;
 
 export const questionLabel = styled.div`
@@ -63,4 +79,8 @@ export const questionLabel = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+
+  @media screen and (max-width: 480px) {
+    font-size: 25px;
+  }
 `;
