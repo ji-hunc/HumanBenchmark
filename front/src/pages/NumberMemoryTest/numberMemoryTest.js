@@ -17,6 +17,7 @@ export default function NumberMemoryTest() {
   const [level, setLevel] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isClearLevel, setIsClearLevel] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const input = useRef();
 
@@ -27,6 +28,7 @@ export default function NumberMemoryTest() {
     setTimeout(() => setIsTimeOver(true), 1000);
     setIsGameOver(false);
     setLevel(0);
+    setIsRegistered(false);
   };
 
   const updateAnswer = (event) => {
@@ -34,11 +36,11 @@ export default function NumberMemoryTest() {
   };
 
   const checkAnswer = (event) => {
-    if (answer == '') {
+    if (answer === '') {
       return;
     }
     console.log(answer);
-    if (question == answer) {
+    if (question === answer) {
       setIsClearLevel(true);
     } else {
       console.log('wrong answer');
@@ -96,7 +98,13 @@ export default function NumberMemoryTest() {
               testTitle="NumberMemory Test"
               testResult={level + ' Level'}
               saveScore={() =>
-                Api.saveScore('NumberMemory', userInfo.userId, level)
+                Api.saveScore(
+                  'NumberMemory',
+                  userInfo.userId,
+                  level,
+                  isRegistered,
+                  setIsRegistered,
+                )
               }
             />
           </div>

@@ -16,6 +16,7 @@ export default function Matrix(props) {
   const [question, setQuestion] = useState(props.numbers);
   const [gameOver, setGameOver] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const background = props.background;
 
   const squares = useRef();
@@ -119,6 +120,7 @@ export default function Matrix(props) {
     setClickCount(0);
     setGameOver(false);
     setIsTesting(false);
+    setIsRegistered(false);
   };
 
   return (
@@ -129,7 +131,13 @@ export default function Matrix(props) {
           testResult={level + ' Level'}
           clickTryAgain={initTest}
           saveScore={() =>
-            Api.saveScore('SequenceMemory', userInfo.userId, level)
+            Api.saveScore(
+              'SequenceMemory',
+              userInfo.userId,
+              level,
+              isRegistered,
+              setIsRegistered,
+            )
           }
         />
       ) : isTesting ? (

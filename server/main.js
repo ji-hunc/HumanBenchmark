@@ -48,16 +48,16 @@ app.post('/postScore', (req, res) => {
 
   db.query(
     `INSERT INTO ${gameName}Record (score, create_date, user_id) VALUES ('${req.body.score}', '${formattedDate}', '${req.body.id}');`,
-    function (result, error) {
+    function (error, result) {
       if (error) {
         console.log('DB QUERY ERROR');
         console.log(error);
       }
+      console.log('POST SCORE');
+      console.log(`${req.body.score}', '${formattedDate}', '${req.body.id}`);
+      res.send('i reveice');
     },
   );
-  console.log('POST SCORE');
-  console.log(`${req.body.score}', '${formattedDate}', '${req.body.id}`);
-  res.send('i reveice');
 });
 
 app.post('/signup', (req, res) => {
@@ -68,17 +68,17 @@ app.post('/signup', (req, res) => {
     `INSERT INTO Member (id, password, create_date) VALUES ('${req.body.id}', '${req.body.pw}', '${formattedDate}')`,
     function (error, result) {
       if (error) {
+        console.log(error);
         if (error.code === 'ER_DUP_ENTRY') {
           res.send('already Exist!');
         } else {
           res.send(error.code);
         }
-      } else {
-        console.log('POST ACCOUNT');
-        console.log(`${req.body.id}', '${req.body.pw}', '${formattedDate}`);
-
-        res.send('registered!');
       }
+      console.log('POST ACCOUNT');
+      console.log(`${req.body.id}', '${req.body.pw}', '${formattedDate}`);
+
+      res.send('registered!');
     },
   );
 });
@@ -93,17 +93,16 @@ app.post('/login', (req, res) => {
       if (error) {
         console.log('DB QUERY ERROR');
         console.log(error);
+      }
+      if (result == 0) {
+        res.send('notRegistered');
       } else {
-        if (result == 0) {
-          res.send('notRegistered');
+        if (result[0]['password'] === req.body.pw) {
+          console.log('POST LOGIN');
+          console.log(`ACCOUNT: ${req.body.id}`);
+          res.send('allow');
         } else {
-          if (result[0]['password'] === req.body.pw) {
-            console.log('POST LOGIN');
-            console.log(`ACCOUNT: ${req.body.id}`);
-            res.send('allow');
-          } else {
-            res.send('wrongPW');
-          }
+          res.send('wrongPW');
         }
       }
     },

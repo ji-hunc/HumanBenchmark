@@ -24,6 +24,7 @@ export default function ReactionTimeTest() {
   const [totalScoreTime, setTotalScoreTime] = useState(0);
   // 테스트 종료 후 배경 커서 상태 변경
   const [cursor, setCursor] = useState('pointer');
+  const [isRegistered, setIsRegistered] = useState(false);
 
   // 배경색
   const red = 'rgb(206, 38, 54)';
@@ -51,6 +52,7 @@ export default function ReactionTimeTest() {
     setTotalScoreTime(0);
     setCursor('pointer');
     setResult('click to start!');
+    setIsRegistered(false);
   };
 
   const handleClick = () => {
@@ -112,6 +114,8 @@ export default function ReactionTimeTest() {
                     'ReactionTime',
                     userInfo.userId,
                     totalScoreTime / 5,
+                    isRegistered,
+                    setIsRegistered,
                   )
                 }
               />
