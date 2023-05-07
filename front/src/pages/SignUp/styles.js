@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   background-color: #e6e8f4;
   width: 100%;
-  height: 540px;
+  height: 500px;
 `;
 
 export const InnerContainer = styled.div`
@@ -61,4 +61,5 @@ export const SignUpButton = styled.button`
   background: rgb(77, 155, 240);
   border-bottom: 4px solid rgb(30, 129, 236);
   color: white !important;
+  margin-top: 20px;
 `;

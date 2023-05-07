@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   background-color: #e6e8f4;
   width: 100%;
-  height: 540px;
+  height: 500px;
 `;
 
 export const InnerContainer = styled.div`

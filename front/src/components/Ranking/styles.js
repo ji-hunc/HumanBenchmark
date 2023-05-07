@@ -13,19 +13,36 @@ export const Container = styled.div`
   text-decoration: none !important;
 `;
 
+export const Title = styled.label`
+  font-size: 40px;
+  margin-bottom: 30px;
+`;
+
+export const RowWrapper = styled.div`
+  margin-top: 20px;
+`;
+
 // RankingRow.js styles
 export const RankCard = styled.div`
+  background-color: ${(props) =>
+    props.rank === 1
+      ? 'rgb(255, 200, 0)'
+      : props.rank === 2
+      ? 'rgb(168, 185, 200)'
+      : props.rank === 3
+      ? 'rgb(193, 150, 107)'
+      : '#ffffff'};
+  gap: ${(props) => (props.gap ? props.gap : null)};
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
 `;
 
 export const RankNumber = styled.label`
-  margin-right: 30px;
   font-size: 30px;
 `;
 export const RankUserName = styled.label`
-  margin-right: 30px;
   font-size: 30px;
 `;
 export const RankScore = styled.label`
