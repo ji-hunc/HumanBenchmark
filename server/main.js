@@ -23,6 +23,24 @@ db.connect();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/rank/:gameName', (req, res) => {
+  const gameName = req.params.gameName;
+  let order = 'DESC';
+  if (gameName === 'ReactionTime') {
+    order = '';
+  }
+  db.query(
+    `SELECT user_id, score FROM ${gameName}Record ORDER BY score ${order} LIMIT 5`,
+    function (error, result) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(result);
+      res.send(result);
+    },
+  );
+});
+
 app.post('/postScore', (req, res) => {
   console.log(req.body);
   const gameName = req.body.gameName;
