@@ -12,6 +12,7 @@ import Navigation from './components/Navigation/Navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import LoginState from './States/LoginState';
 import AlphabetMemoryTest from './pages/AlphabetMemoryTest/AlphabetMemoryTest';
+import ScrollToTop from './ScrolltoTop/ScrollToTop';
 
 function App() {
   const setLoginState = useSetRecoilState(LoginState);
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reactiontimetest" element={<ReactionTimeTest />} />
