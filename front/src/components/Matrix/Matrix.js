@@ -75,7 +75,7 @@ export default function Matrix(props) {
       // TODO GameOver시 처리할 프로세스 작성해야함
       return;
     }
-    event.target.style.backgroundColor = 'rgb(255, 213, 97)';
+    event.target.style.backgroundColor = 'rgb(242,193,80)';
     setTimeout(() => {
       event.target.style.backgroundColor = 'rgb(242, 242, 242)';
     }, 300);
@@ -100,7 +100,7 @@ export default function Matrix(props) {
       return;
     }
     blockRefs.current[question[index]].style.backgroundColor =
-      'rgb(255, 213, 97)';
+      'rgb(242,193,80)';
     setTimeout(() => {
       blockRefs.current[question[index]].style.backgroundColor =
         'rgb(242, 242, 242)';

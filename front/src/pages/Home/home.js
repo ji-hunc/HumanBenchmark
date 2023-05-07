@@ -35,128 +35,24 @@ export default function Home() {
         onClick={() => navigate('/reactiontimetest')}
       >
         <h1 style={{ color: '#fff', fontSize: '80px', fontWeight: '400' }}>
-          Reaction Test
+          Reaction Time
         </h1>
       </div>
       <h1>Other Games</h1>
-      <Swiper
-        initialSlide={1}
-        // effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={'auto'}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <div
-            style={{
-              backgroundColor: 'rgb(238, 238, 238)',
-              width: '100%',
-              height: '100%',
-            }}
-            onClick={() => navigate('/reactiontimetest')}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '30px',
-                backgroundColor: 'rgb(140, 140, 140)',
-                width: '100%',
-                height: '100%',
-                borderRadius: '20px',
-              }}
-            >
-              Reaction Test
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            style={{
-              backgroundColor: 'rgb(238, 238, 238)',
-              width: '100%',
-              height: '100%',
-            }}
-            onClick={() => navigate('/sequencememorytest')}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '30px',
-                backgroundColor: 'rgb(140, 140, 90)',
-                width: '100%',
-                height: '100%',
-                borderRadius: '20px',
-              }}
-            >
-              Sequence Test
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            style={{
-              backgroundColor: 'rgb(238, 238, 238)',
-              width: '100%',
-              height: '100%',
-            }}
-            onClick={() => navigate('/numbermemorytest')}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '30px',
-                backgroundColor: 'rgb(140, 90, 140)',
-                width: '100%',
-                height: '100%',
-                borderRadius: '20px',
-              }}
-            >
-              Number Memory Test
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            style={{
-              backgroundColor: 'rgb(238, 238, 238)',
-              width: '100%',
-              height: '100%',
-            }}
-            onClick={() => navigate('/alphabetmemorytest')}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '30px',
-                backgroundColor: 'rgb(90, 140, 140)',
-                width: '100%',
-                height: '100%',
-                borderRadius: '20px',
-              }}
-            >
-              Alphabet Memory Test
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+      <style.GameContainer>
+        <style.GameCard onClick={() => navigate('/reactiontimetest')}>
+          <style.GameTitle>Reaction Time</style.GameTitle>
+        </style.GameCard>
+        <style.GameCard onClick={() => navigate('/sequencememorytest')}>
+          <style.GameTitle>Sequence Memory</style.GameTitle>
+        </style.GameCard>
+        <style.GameCard onClick={() => navigate('/numbermemorytest')}>
+          <style.GameTitle>Number Memory</style.GameTitle>
+        </style.GameCard>
+        <style.GameCard onClick={() => navigate('/alphabetmemorytest')}>
+          <style.GameTitle>Alphabet Memory</style.GameTitle>
+        </style.GameCard>
+      </style.GameContainer>
     </style.Container>
   );
 }

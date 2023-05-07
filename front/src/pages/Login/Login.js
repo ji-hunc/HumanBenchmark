@@ -51,10 +51,13 @@ export default function Login() {
       <style.InnerContainer>
         <style.Title>Login</style.Title>
         <style.InputWrapper>
-          <style.description>UserName</style.description>
-          <style.Input onKeyPress={handleOnKeyPress} ref={userName} />
-          <style.description>Password</style.description>
           <style.Input
+            placeholder="User Name"
+            onKeyPress={handleOnKeyPress}
+            ref={userName}
+          />
+          <style.Input
+            placeholder="Password"
             onKeyPress={handleOnKeyPress}
             type="password"
             ref={password}

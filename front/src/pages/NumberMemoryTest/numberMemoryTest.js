@@ -55,10 +55,10 @@ export default function NumberMemoryTest() {
     const sequence = getRandomSequence(level + 2);
     console.log(sequence);
     setQuestion(sequence);
-    setLevel((state) => state + 1);
     setIsTimeOver(false);
     setIsClearLevel(false);
-    setTimeout(() => setIsTimeOver(true), 1000);
+    setTimeout(() => setIsTimeOver(true), (level + 1) * 1000);
+    setLevel((state) => state + 1);
   };
 
   const getRandomSequence = (length) => {
@@ -112,8 +112,17 @@ export default function NumberMemoryTest() {
           <div>
             {isClearLevel ? (
               <div>
-                <h1 style={{ fontSize: '80px', color: 'white' }}>Correct!</h1>
-                <style.Button onClick={goNextLevel}>next</style.Button>
+                <h1
+                  style={{
+                    fontSize: '80px',
+                    color: 'white',
+                    margin: '0px',
+                    fontWeight: 400,
+                  }}
+                >
+                  Correct!
+                </h1>
+                <style.Button onClick={goNextLevel}>Next</style.Button>
               </div>
             ) : (
               <div>

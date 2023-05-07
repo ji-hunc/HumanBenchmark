@@ -45,12 +45,13 @@ export default function SignUp() {
     <style.Container>
       <style.InnerContainer>
         <style.Title>Sign Up</style.Title>
-        <style.description>UserName</style.description>
-        <style.Input ref={userName} />
-        <style.description>Password</style.description>
-        <style.Input type="password" ref={password} />
-        <style.description>Password Confirm</style.description>
-        <style.Input type="password" ref={passwordConfirm} />
+        <style.Input placeholder="User Name" ref={userName} />
+        <style.Input placeholder="Password" type="password" ref={password} />
+        <style.Input
+          placeholder="PasswordConfirm"
+          type="password"
+          ref={passwordConfirm}
+        />
         <style.SignUpButton onClick={requestSignup}>Sign Up</style.SignUpButton>
       </style.InnerContainer>
     </style.Container>

@@ -23,10 +23,12 @@ export const Button = styled.button`
   cursor: pointer;
   color: rgb(51, 51, 51) !important;
   border: none;
+  border-radius: 10px;
+  margin-top: 10px;
 `;
 
 export const Input = styled.input`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: white;
   background: rgba(0, 0, 100, 0);
   border-radius: 3px;

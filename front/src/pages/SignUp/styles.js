@@ -28,29 +28,22 @@ export const Title = styled.label`
   font-family: Helvetica, Arial, sans-serif;
 `;
 
-export const description = styled.label`
-  width: 100%;
-  margin: 0px 0px 5px;
-  padding: 0;
-  font-weight: 400;
-  outline: 0;
-  color: rgb(51, 51, 51) !important;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 18px;
-`;
-
 export const Input = styled.input`
+  height: 60px;
   padding: 10px;
   border: 1px solid rgb(204, 204, 204);
   width: 400px;
   display: block;
   box-sizing: border-box;
   margin: 0;
+  font-size: 20px;
+  border-radius: 10px;
 `;
 
 export const SignUpButton = styled.button`
   width: 100%;
-  width: 100%;
+  height: 60px;
+  font-size: 25px;
   appearance: none;
   border-top: none;
   border-right: none;
@@ -62,4 +55,5 @@ export const SignUpButton = styled.button`
   border-bottom: none;
   color: white !important;
   margin-top: 20px;
+  border-radius: 10px;
 `;
