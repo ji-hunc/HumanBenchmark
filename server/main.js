@@ -44,7 +44,10 @@ app.get('/rank/:gameName', (req, res) => {
 app.post('/postScore', (req, res) => {
   const gameName = req.body.gameName;
   const now = new Date();
-  const formattedDate = now.toISOString().slice(0, 19).replace('T', ' ');
+  const utcNow = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
+  const koreaTimeDiff = 9 * 60 * 60 * 1000;
+  const koreaNow = new Date(utcNow + 2 * koreaTimeDiff);
+  const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
     `INSERT INTO ${gameName}Record (score, create_date, user_id) VALUES ('${req.body.score}', '${formattedDate}', '${req.body.id}');`,
@@ -62,7 +65,10 @@ app.post('/postScore', (req, res) => {
 
 app.post('/signup', (req, res) => {
   const now = new Date();
-  const formattedDate = now.toISOString().slice(0, 19).replace('T', ' ');
+  const utcNow = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
+  const koreaTimeDiff = 9 * 60 * 60 * 1000;
+  const koreaNow = new Date(utcNow + 2 * koreaTimeDiff);
+  const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
     `INSERT INTO Member (id, password, create_date) VALUES ('${req.body.id}', '${req.body.pw}', '${formattedDate}')`,
@@ -85,7 +91,10 @@ app.post('/signup', (req, res) => {
 
 app.post('/login', (req, res) => {
   const now = new Date();
-  const formattedDate = now.toISOString().slice(0, 19).replace('T', ' ');
+  const utcNow = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
+  const koreaTimeDiff = 9 * 60 * 60 * 1000;
+  const koreaNow = new Date(utcNow + 2 * koreaTimeDiff);
+  const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
     `SELECT id, password FROM Member WHERE id='${req.body.id}'`,

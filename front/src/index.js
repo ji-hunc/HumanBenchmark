@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import ScrollToTop from './ScrollTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <RecoilRoot>
     <BrowserRouter>
+      <ScrollToTop />
       <App />
     </BrowserRouter>
   </RecoilRoot>,

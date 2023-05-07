@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home/home';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ReactionTimeTest from './pages/ReactionTimeTest/reactionTimeTest';
 import SequenceMemoryTest from './pages/SequenceMemoryTest/SequenceMemoryTest';
 import NumberMemoryTest from './pages/NumberMemoryTest/numberMemoryTest';
