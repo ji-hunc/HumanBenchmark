@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 20px;
+  padding: 20px 0px;
   display: flex;
   flex-direction: row;
   background-color: #2c5582;
@@ -22,6 +22,7 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.label`
+  margin-left: 20px;
   font-size: 30px;
   cursor: pointer;
 `;
