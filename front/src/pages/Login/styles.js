@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e6e8f4;
+  background-color: rgb(238, 238, 238);
   width: 100%;
-  height: 540px;
+  height: 500px;
 `;
 
 export const InnerContainer = styled.div`
@@ -23,33 +23,27 @@ export const Title = styled.label`
   text-align: center;
   font-size: 48px;
   font-weight: 300;
-  margin: 15px 0px;
+  margin: 50px 0px;
   color: rgb(51, 51, 51) !important;
   font-family: Helvetica, Arial, sans-serif;
-`;
-
-export const description = styled.label`
-  margin: 0px 0px 5px;
-  padding: 0;
-  font-weight: 400;
-  outline: 0;
-  color: rgb(51, 51, 51) !important;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 18px;
 `;
 
 export const Input = styled.input`
   padding: 10px;
   border: 1px solid rgb(204, 204, 204);
   width: 400px;
+  height: 60px;
   display: block;
   box-sizing: border-box;
   margin: 0;
+  font-size: 20px;
+  border-radius: 10px;
 `;
 
 export const SignUpButton = styled.button`
   width: 100%;
-  width: 100%;
+  height: 60px;
+  font-size: 25px;
   appearance: none;
   border-top: none;
   border-right: none;
@@ -58,9 +52,10 @@ export const SignUpButton = styled.button`
   margin-top: 20px;
   cursor: pointer;
   padding: 12px;
-  background: rgb(77, 155, 240);
-  border-bottom: 4px solid rgb(30, 129, 236);
+  background: rgb(27, 152, 137);
+  border-bottom: none;
   color: white !important;
+  border-radius: 10px;
 `;
 
 export const InputWrapper = styled.div`
