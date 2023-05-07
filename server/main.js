@@ -4,16 +4,16 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-// const port = 3000;
-const port = 8000;
+const port = 3000;
+// const port = 8000;
 
 // local db 접속2
 var db = mysql.createConnection({
-  // host: 'mariadb',
-  host: '127.0.0.1',
+  host: 'mariadb',
+  // host: '127.0.0.1',
   user: 'root',
-  // password: '1234',
-  password: 'wlgns620',
+  password: '1234',
+  // password: 'wlgns620',
   database: 'HumanBenchmark',
   port: '3306',
 });
@@ -30,11 +30,13 @@ app.get('/rank/:gameName', (req, res) => {
     order = '';
   }
   db.query(
-    `SELECT user_id, score FROM ${gameName}Record ORDER BY score ${order} LIMIT 5`,
+    `SELECT user_id, score FROM ${gameName}Record ORDER BY score ${order} LIMIT 10`,
     function (error, result) {
       if (error) {
+        console.log('DB QUERY ERROR');
         console.log(error);
       }
+      console.log('GET RANK');
       console.log(result);
       res.send(result);
     },
@@ -42,14 +44,21 @@ app.get('/rank/:gameName', (req, res) => {
 });
 
 app.post('/postScore', (req, res) => {
-  console.log(req.body);
   const gameName = req.body.gameName;
   const now = new Date();
   const formattedDate = now.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
     `INSERT INTO ${gameName}Record (score, create_date, user_id) VALUES ('${req.body.score}', '${formattedDate}', '${req.body.id}');`,
+    function (result, error) {
+      if (error) {
+        console.log('DB QUERY ERROR');
+        console.log(error);
+      }
+    },
   );
+  console.log('POST SCORE');
+  console.log(`${req.body.score}', '${formattedDate}', '${req.body.id}`);
   res.send('i reveice');
 });
 
@@ -67,6 +76,9 @@ app.post('/signup', (req, res) => {
           res.send(error.code);
         }
       } else {
+        console.log('POST ACCOUNT');
+        console.log(`${req.body.id}', '${req.body.pw}', '${formattedDate}`);
+
         res.send('registered!');
       }
     },
@@ -81,13 +93,15 @@ app.post('/login', (req, res) => {
     `SELECT id, password FROM Member WHERE id='${req.body.id}'`,
     function (error, result) {
       if (error) {
+        console.log('DB QUERY ERROR');
         console.log(error);
       } else {
         if (result == 0) {
           res.send('notRegistered');
         } else {
-          console.log(result);
           if (result[0]['password'] === req.body.pw) {
+            console.log('POST LOGIN');
+            console.log(`ACCOUNT: ${req.body.id}`);
             res.send('allow');
           } else {
             res.send('wrongPW');
@@ -99,9 +113,8 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  console.log(req);
   console.log('enter!!!');
-  res.send('Hello World!22');
+  res.send('Hello World!');
 });
 
 app.listen(port, () => {

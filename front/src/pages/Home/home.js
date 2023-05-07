@@ -29,7 +29,7 @@ export default function Home() {
           alignItems: 'center',
           justifyContent: 'center',
           width: '100%',
-          height: '540px',
+          height: '500px',
           backgroundColor: 'rgb(43, 135, 209)',
         }}
         onClick={() => navigate('/reactiontimetest')}

@@ -5,6 +5,7 @@ import * as style from './styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoginState from '../../States/LoginState';
+import Api from '../../Api/Api';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function Login() {
     }
   };
 
-  const requestLogin = () => {
+  const requestLogin = async () => {
     const id = userName.current.value;
     const pw = password.current.value;
 
@@ -27,47 +28,31 @@ export default function Login() {
       alert('모든 항목을 채워주세요');
       return;
     } else {
-      axios
-        .post(
-          'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app/login/',
-          { id: id, pw: pw },
-        )
-        .then((Response) => {
-          console.log(Response.data);
-          if (
-            Response.data === 'notRegistered' ||
-            Response.data === 'wrongPW'
-          ) {
-            alert('등록되지 않은 아이디이거나 비밀번호가 틀렸습니다.');
-          } else if (Response.data === 'allow') {
-            alert('로그인 완료');
-            sessionStorage.setItem('userId', id);
-            setLoginState({
-              isLogin: true,
-              userId: id,
-            });
-            navigate('/');
-            window.location.reload();
-          } else {
-            console.log(Response.data);
-          }
-          // if (Response.data === 'already Exist!') {
-          //   alert('이미 존재하는 아이디입니다.');
-          // } else {
-          //   alert('성공적으로 등록되었습니다!');
-          // }
-        })
-        .catch((Error) => console.log(Error));
-      // alert('회원가입 완료~');
+      const response = await Api.requestLogin(id, pw);
+      if (response.data === 'notRegistered' || response.data === 'wrongPW') {
+        alert('등록되지 않은 아이디이거나 비밀번호가 틀렸습니다.');
+      } else if (response.data === 'allow') {
+        alert('로그인 완료');
+        sessionStorage.setItem('userId', id);
+        setLoginState({
+          isLogin: true,
+          userId: id,
+        });
+        navigate('/');
+        window.location.reload();
+      } else {
+        console.log(response.data);
+      }
     }
   };
+
   return (
     <style.Container>
       <style.InnerContainer>
         <style.Title>Login</style.Title>
         <style.InputWrapper>
           <style.description>UserName</style.description>
-          <style.Input ref={userName} />
+          <style.Input onKeyPress={handleOnKeyPress} ref={userName} />
           <style.description>Password</style.description>
           <style.Input
             onKeyPress={handleOnKeyPress}
