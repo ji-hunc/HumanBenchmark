@@ -5,6 +5,7 @@ import ResultBox from '../../components/ResultBox/ResultBox';
 import { useRecoilValue } from 'recoil';
 import Api from '../../Api/Api';
 import LoginState from '../../States/LoginState';
+import Ranking from '../../components/Ranking/Ranking';
 
 export default function ReactionTimeTest() {
   const userInfo = useRecoilValue(LoginState);
@@ -93,42 +94,45 @@ export default function ReactionTimeTest() {
   };
 
   return (
-    <style.Container
-      style={{ cursor: cursor, backgroundColor: color }}
-      onMouseDown={() => handleClick()}
-    >
-      {colorState == 1 ? (
-        // blue 화면일 때
-        <div style={{ color: 'white' }}>
-          {isFinishMeasure ? (
-            <ResultBox
-              clickTryAgain={initTest}
-              testTitle="Reaction Time"
-              testResult={totalScoreTime / 5 + ' ms'}
-              saveScore={() =>
-                Api.saveScore(
-                  'ReactionTime',
-                  userInfo.userId,
-                  totalScoreTime / 5,
-                )
-              }
-            />
-          ) : (
-            <div>
-              <style.MainText>{result}</style.MainText>
-              {isTesting ? (
-                <style.SubText>click to continue</style.SubText>
-              ) : null}
-            </div>
-          )}
-        </div>
-      ) : colorState == 2 ? (
-        // red 화면일 떄
-        <style.MainText>Wait for Green ...</style.MainText>
-      ) : (
-        // green 화면일 때
-        <style.MainText>Click!</style.MainText>
-      )}
-    </style.Container>
+    <div>
+      <style.Container
+        style={{ cursor: cursor, backgroundColor: color }}
+        onMouseDown={() => handleClick()}
+      >
+        {colorState == 1 ? (
+          // blue 화면일 때
+          <div style={{ color: 'white' }}>
+            {isFinishMeasure ? (
+              <ResultBox
+                clickTryAgain={initTest}
+                testTitle="Reaction Time"
+                testResult={totalScoreTime / 5 + ' ms'}
+                saveScore={() =>
+                  Api.saveScore(
+                    'ReactionTime',
+                    userInfo.userId,
+                    totalScoreTime / 5,
+                  )
+                }
+              />
+            ) : (
+              <div>
+                <style.MainText>{result}</style.MainText>
+                {isTesting ? (
+                  <style.SubText>click to continue</style.SubText>
+                ) : null}
+              </div>
+            )}
+          </div>
+        ) : colorState == 2 ? (
+          // red 화면일 떄
+          <style.MainText>Wait for Green ...</style.MainText>
+        ) : (
+          // green 화면일 때
+          <style.MainText>Click!</style.MainText>
+        )}
+      </style.Container>
+      <Ranking gameName={'ReactionTime'} />
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
 import Matrix from '../../components/Matrix/Matrix';
+import Ranking from '../../components/Ranking/Ranking';
 
 export default function SequenceMemoryTest() {
   const background = useRef();
@@ -37,8 +38,11 @@ export default function SequenceMemoryTest() {
   const numbers = genRandomSeq();
 
   return (
-    <style.Container ref={background}>
-      <Matrix background={background} numbers={sequence} />
-    </style.Container>
+    <div>
+      <style.Container ref={background}>
+        <Matrix background={background} numbers={sequence} />
+      </style.Container>
+      <Ranking gameName={'SequenceMemory'} />
+    </div>
   );
 }

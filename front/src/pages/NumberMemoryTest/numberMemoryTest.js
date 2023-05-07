@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
@@ -6,6 +6,7 @@ import AnswerCheck from '../../components/AnswerCheck/AnswerCheck';
 import { useRecoilValue } from 'recoil';
 import Api from '../../Api/Api';
 import LoginState from '../../States/LoginState';
+import Ranking from '../../components/Ranking/Ranking';
 
 export default function NumberMemoryTest() {
   const userInfo = useRecoilValue(LoginState);
@@ -76,56 +77,59 @@ export default function NumberMemoryTest() {
   };
 
   return (
-    <style.Container>
-      {isTesting ? null : (
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <style.startLabel onClick={startGame}>
-            Click to Start!
-          </style.startLabel>
-          <style.Button onClick={startGame}>Start Game</style.Button>
-        </div>
-      )}
+    <div>
+      <style.Container>
+        {isTesting ? null : (
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <style.startLabel onClick={startGame}>
+              Click to Start!
+            </style.startLabel>
+            <style.Button onClick={startGame}>Start Game</style.Button>
+          </div>
+        )}
 
-      {isGameOver ? (
-        <div>
-          <AnswerCheck correctAnswer={question} answer={answer} />
-          <ResultBox
-            clickTryAgain={startGame}
-            testTitle="NumberMemory Test"
-            testResult={level + ' Level'}
-            saveScore={() =>
-              Api.saveScore('NumberMemory', userInfo.userId, level)
-            }
-          />
-        </div>
-      ) : (
-        <div>
-          {isClearLevel ? (
-            <div>
-              <h1 style={{ fontSize: '80px', color: 'white' }}>Correct!</h1>
-              <style.Button onClick={goNextLevel}>next</style.Button>
-            </div>
-          ) : (
-            <div>
-              {isTimeOver ? (
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <style.questionLabel>
-                    What was the Number?
-                  </style.questionLabel>
-                  <style.Input
-                    ref={input}
-                    onChange={updateAnswer}
-                    onKeyPress={handleOnKeyPress}
-                  />
-                  <style.Button onClick={checkAnswer}>Submit</style.Button>
-                </div>
-              ) : (
-                <style.Question>{question}</style.Question>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-    </style.Container>
+        {isGameOver ? (
+          <div>
+            <AnswerCheck correctAnswer={question} answer={answer} />
+            <ResultBox
+              clickTryAgain={startGame}
+              testTitle="NumberMemory Test"
+              testResult={level + ' Level'}
+              saveScore={() =>
+                Api.saveScore('NumberMemory', userInfo.userId, level)
+              }
+            />
+          </div>
+        ) : (
+          <div>
+            {isClearLevel ? (
+              <div>
+                <h1 style={{ fontSize: '80px', color: 'white' }}>Correct!</h1>
+                <style.Button onClick={goNextLevel}>next</style.Button>
+              </div>
+            ) : (
+              <div>
+                {isTimeOver ? (
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <style.questionLabel>
+                      What was the Number?
+                    </style.questionLabel>
+                    <style.Input
+                      ref={input}
+                      onChange={updateAnswer}
+                      onKeyPress={handleOnKeyPress}
+                    />
+                    <style.Button onClick={checkAnswer}>Submit</style.Button>
+                  </div>
+                ) : (
+                  <style.Question>{question}</style.Question>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </style.Container>
+      <Ranking gameName={'NumberMemory'} />
+    </div>
   );
 }
