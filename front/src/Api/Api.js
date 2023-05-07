@@ -1,8 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from 'axios';
 
-// const reqUrl = 'http://192.168.219.104:8000';
-const reqUrl = 'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app';
+const reqUrl = 'http://192.168.219.104:8000';
+// const reqUrl = 'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app';
 
 export default {
   saveScore(gameName, userId, score) {

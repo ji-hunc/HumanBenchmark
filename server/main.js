@@ -4,16 +4,16 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const port = 3000;
-// const port = 8000;
+// const port = 3000;
+const port = 8000;
 
 // local db 접속2
 var db = mysql.createConnection({
-  host: 'mariadb',
-  // host: '127.0.0.1',
+  // host: 'mariadb',
+  host: '127.0.0.1',
   user: 'root',
-  password: '1234',
-  // password: 'wlgns620',
+  // password: '1234',
+  password: 'wlgns620',
   database: 'HumanBenchmark',
   port: '3306',
 });
