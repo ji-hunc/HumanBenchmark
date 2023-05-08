@@ -103,11 +103,11 @@ app.post('/login', (req, res) => {
         console.log('DB QUERY ERROR');
         console.log(error);
       }
-      const valueArray = Object.values(result[0]);
-      const pw = valueArray[1];
       if (result == 0) {
         res.send('notRegistered');
       } else {
+        const valueArray = Object.values(result[0]);
+        const pw = valueArray[1];
         if (pw === req.body.pw) {
           console.log('POST LOGIN');
           console.log(`ACCOUNT: ${req.body.id}`);
