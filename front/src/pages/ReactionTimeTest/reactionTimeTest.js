@@ -1,3 +1,8 @@
+/**********************************
+ * Name : reactionTimeTest.js
+ * Author : Jihun Choi
+ * Introduction : reactionTime 테스트를 위한 페이지
+ ********************************** */
 import { useState } from 'react';
 import React from 'react';
 import * as style from './styles';
@@ -8,6 +13,7 @@ import LoginState from '../../States/LoginState';
 import Ranking from '../../components/Ranking/Ranking';
 
 export default function ReactionTimeTest() {
+  // user 정보 가져오기
   const userInfo = useRecoilValue(LoginState);
   // 배경색 관련
   const [colorState, setColorState] = useState(1);
@@ -35,6 +41,7 @@ export default function ReactionTimeTest() {
   const ranMax = 5000;
   const ranMin = 2000;
 
+  // 게임을 랜덤 시간 후에 초록색으로 바꾸는 함수
   const changeToGreen = () => {
     const randomNum = Math.random() * (ranMax - ranMin) + ranMin;
     const timerId = setTimeout(() => {
@@ -45,6 +52,7 @@ export default function ReactionTimeTest() {
     setRandomTimer(timerId);
   };
 
+  // 게임이 종료된 후 초기화 하는 함수
   const initTest = () => {
     setIsTesting(false);
     setTrycount(5);
@@ -55,6 +63,7 @@ export default function ReactionTimeTest() {
     setIsRegistered(false);
   };
 
+  // 게임을 클릭했을 때 처리하는 함수
   const handleClick = () => {
     // 테스트가 끝났으면(5회) 배경 커서 변경 및 클릭 무효화
     if (isFinishMeasure) {
@@ -65,13 +74,13 @@ export default function ReactionTimeTest() {
     if (!isTesting) {
       initTest();
     }
-    if (colorState == 1) {
+    if (colorState === 1) {
       // blue 화면일 때
       setIsTesting(true);
       setColor(red); // set to red
       setColorState(2); // set to red
       changeToGreen();
-    } else if (colorState == 2) {
+    } else if (colorState === 2) {
       // red 화면일 떄
       clearTimeout(randomTimer);
       setResult('Too Fast!');
@@ -82,7 +91,7 @@ export default function ReactionTimeTest() {
       const score = Date.now() - startTime;
       setResult(score + ' ms');
       setTotalScoreTime((state) => state + score);
-      if (tryCount - 1 == 0) {
+      if (tryCount - 1 === 0) {
         setIsTesting(false);
         setTrycount(-1);
         setIsFinishMeasure(true);
@@ -101,7 +110,7 @@ export default function ReactionTimeTest() {
         style={{ cursor: cursor, backgroundColor: color }}
         onMouseDown={() => handleClick()}
       >
-        {colorState == 1 ? (
+        {colorState === 1 ? (
           // blue 화면일 때
           <div style={{ color: 'white' }}>
             {isFinishMeasure ? (
@@ -123,12 +132,14 @@ export default function ReactionTimeTest() {
               <div>
                 <style.MainText>{result}</style.MainText>
                 {isTesting ? (
-                  <style.SubText>click to continue</style.SubText>
+                  <style.SubText>
+                    click to continue ({5 - tryCount}/5)
+                  </style.SubText>
                 ) : null}
               </div>
             )}
           </div>
-        ) : colorState == 2 ? (
+        ) : colorState === 2 ? (
           // red 화면일 떄
           <style.MainText>Wait for Green ...</style.MainText>
         ) : (

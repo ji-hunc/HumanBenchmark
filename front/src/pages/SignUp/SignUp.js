@@ -1,16 +1,22 @@
-import { useRef, useState } from 'react';
+/**********************************
+ * Name : SignUp.js
+ * Author : Jihun Choi
+ * Introduction : 회원가입 페이지
+ ********************************** */
+import { useRef } from 'react';
 import React from 'react';
 import * as style from './styles';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../Api/Api';
 
 export default function SignUp() {
+  // 유저의 입력을 받을 input refs
   const userName = useRef();
   const password = useRef();
   const passwordConfirm = useRef();
   const navigate = useNavigate();
 
+  // api에게 회원가입 요청을 Post로 보냄
   const requestSignup = async () => {
     const id = userName.current.value;
     const pw = password.current.value;
@@ -36,10 +42,6 @@ export default function SignUp() {
         }
       }
     }
-
-    console.log(id);
-    console.log(pw);
-    console.log(pw2);
   };
   return (
     <style.Container>

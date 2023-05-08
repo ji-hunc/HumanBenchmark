@@ -1,4 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+/**********************************
+ * Name : AlphabetMemoryTest.js
+ * Author : Jihun Choi
+ * Introduction : 알파벳메모리 테스트를 위한 페이지
+ ********************************** */
+import { useState, useRef } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
@@ -9,7 +14,10 @@ import LoginState from '../../States/LoginState';
 import Ranking from '../../components/Ranking/Ranking';
 
 export default function AlphabetMemoryTest() {
+  // user 정보 가져오기
   const userInfo = useRecoilValue(LoginState);
+
+  // 게임 진행을 위한 states
   const [question, setQuestion] = useState('');
   const [isTesting, setIsTesting] = useState(false);
   const [isTimeOver, setIsTimeOver] = useState(false);
@@ -19,8 +27,10 @@ export default function AlphabetMemoryTest() {
   const [isClearLevel, setIsClearLevel] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
+  // 유저의 input을 받는 ref
   const input = useRef();
 
+  // 게임 시작 함수
   const startGame = () => {
     const sequence = getRandomSequence(1);
     setQuestion(sequence);
@@ -31,30 +41,29 @@ export default function AlphabetMemoryTest() {
     setIsRegistered(false);
   };
 
+  // 유저가 값을 입력할 때 마다 대문자로 바꿔주고, state에 저장
   const updateAnswer = (event) => {
     setAnswer(event.target.value.toUpperCase());
     event.target.value = event.target.value.toUpperCase();
   };
 
+  // 답이 맞는지 확인하는 함수
   const checkAnswer = (event) => {
     if (answer === '') {
       return;
     }
-    console.log(answer);
     if (question === answer) {
       setIsClearLevel(true);
     } else {
-      console.log('wrong answer');
       setIsGameOver(true);
       setIsTimeOver(false);
     }
   };
 
+  // 다음 레벨로 가는 함수
   const goNextLevel = () => {
     setAnswer('');
-    console.log('correct');
     const sequence = getRandomSequence(level + 2);
-    console.log(sequence);
     setQuestion(sequence);
     setIsTimeOver(false);
     setIsClearLevel(false);
@@ -62,6 +71,7 @@ export default function AlphabetMemoryTest() {
     setLevel((state) => state + 1);
   };
 
+  // 랜덤으로 알파벳 시퀀스를 만들어 내는 함수
   const getRandomSequence = (length) => {
     const numbers = [
       'A',
@@ -100,6 +110,7 @@ export default function AlphabetMemoryTest() {
     return sequence;
   };
 
+  // 엔터키를 눌렀을 때 자동으로 답이 제출하게 하기 위한 enter키 처리 함수
   const handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
       checkAnswer(); // Enter 입력이 되면 클릭 이벤트 실행
@@ -120,7 +131,11 @@ export default function AlphabetMemoryTest() {
 
         {isGameOver ? (
           <div>
-            <AnswerCheck correctAnswer={question} answer={answer} />
+            <AnswerCheck
+              question="Alphabets"
+              correctAnswer={question}
+              answer={answer}
+            />
             <ResultBox
               clickTryAgain={startGame}
               testTitle="AlphabetMemory Test"
