@@ -4,11 +4,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
   border-radius: 5px;
   padding: 30px;
   background-color: rgb(238, 238, 238);
-  transition: transform 0.2s ease-in-out 0s, box-shadow 0.2s ease-in-out 0s;
   color: rgb(51, 51, 51) !important;
   text-decoration: none !important;
 `;
@@ -40,6 +38,7 @@ export const RankCard = styled.div`
   width: 50%;
   grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.3) 10px 10px 10px;
   &:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
