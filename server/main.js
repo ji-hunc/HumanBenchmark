@@ -4,8 +4,8 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const port = 3000;
-// const port = 8000;
+// const port = 3000;
+const port = 8000;
 
 // local db 접속2
 var db = mysql.createConnection({
@@ -71,7 +71,7 @@ app.post('/signup', (req, res) => {
   const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
-    `INSERT INTO Member (id, password, create_date) VALUES ('${req.body.id}', '${req.body.pw}', '${formattedDate}')`,
+    `INSERT INTO Member (id, password, create_date) VALUES ('${req.body.id}', HEX(AES_ENCRYPT('${req.body.pw}', 'messi')), '${formattedDate}')`,
     function (error, result) {
       if (error) {
         console.log(error);
@@ -97,16 +97,18 @@ app.post('/login', (req, res) => {
   const formattedDate = koreaNow.toISOString().slice(0, 19).replace('T', ' ');
 
   db.query(
-    `SELECT id, password FROM Member WHERE id='${req.body.id}'`,
+    `SELECT id, cast(AES_DECRYPT(UNHEX(password), 'messi') as char(100)) FROM Member WHERE id='${req.body.id}'`,
     function (error, result) {
       if (error) {
         console.log('DB QUERY ERROR');
         console.log(error);
       }
+      const valueArray = Object.values(result[0]);
+      const pw = valueArray[1];
       if (result == 0) {
         res.send('notRegistered');
       } else {
-        if (result[0]['password'] === req.body.pw) {
+        if (pw === req.body.pw) {
           console.log('POST LOGIN');
           console.log(`ACCOUNT: ${req.body.id}`);
           res.send('allow');
