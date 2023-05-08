@@ -1,5 +1,9 @@
+/**********************************
+ * Name : ResultBox.js
+ * Author : Jihun Choi
+ * Introduction : 게임의 결과를 보여줄 컴포넌트. 게임이름, 결과, 저장 및 다시하기 버튼이 포함됨
+ ********************************** */
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
 import React from 'react';
 import * as style from './styles';
 

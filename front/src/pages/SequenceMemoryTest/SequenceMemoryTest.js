@@ -1,21 +1,19 @@
-import { useState, useRef } from 'react';
+/**********************************
+ * Name : SequenceMemoryTest.js
+ * Author : Jihun Choi
+ * Introduction : sequenceMemory테스트를 위한 페이지
+ ********************************** */
+import { useRef } from 'react';
 import React from 'react';
 import * as style from './styles';
-import ResultBox from '../../components/ResultBox/ResultBox';
 import Matrix from '../../components/Matrix/Matrix';
 import Ranking from '../../components/Ranking/Ranking';
 
 export default function SequenceMemoryTest() {
+  // 베경 ref
   const background = useRef();
 
-  const genRandomSeq = () => {
-    let seq = '';
-    for (let i = 0; i < 30; i++) {
-      seq += Math.floor(Math.random() * (10 - 1)) + 1;
-    }
-    return seq;
-  };
-
+  // 랜덤 시퀀스를 생성해서 Matrix에게 넘겨줌
   const generateSequence = () => {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let sequence = '';
@@ -33,9 +31,8 @@ export default function SequenceMemoryTest() {
 
     return sequence;
   };
-  const sequence = generateSequence();
 
-  const numbers = genRandomSeq();
+  const sequence = generateSequence();
 
   return (
     <div>

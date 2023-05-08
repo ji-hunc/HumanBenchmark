@@ -8,6 +8,10 @@ export const Container = styled.div`
   background-color: rgb(238, 238, 238);
   width: 100%;
   height: 500px;
+
+  @media screen and (max-width: 480px) {
+    height: 100%;
+  }
 `;
 
 export const InnerContainer = styled.div`
@@ -26,6 +30,11 @@ export const Title = styled.label`
   margin: 50px 0px;
   color: rgb(51, 51, 51) !important;
   font-family: Helvetica, Arial, sans-serif;
+
+  @media screen and (max-width: 480px) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const Input = styled.input`
@@ -41,6 +50,7 @@ export const Input = styled.input`
 
   @media screen and (max-width: 480px) {
     font-size: 15px;
+    height: 50px;
   }
 `;
 

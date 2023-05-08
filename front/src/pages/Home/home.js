@@ -1,25 +1,14 @@
-import { useState, useEffect } from 'react';
+/**********************************
+ * Name : home.js
+ * Author : Jihun Choi
+ * Introduction : 가장 기본이 되는 home 페이지
+ ********************************** */
 import React from 'react';
 import * as style from './styles';
-import TestCard from '../../components/TestCard/TestCard';
 import { useNavigate } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useRecoilValue } from 'recoil';
-import LoginState from '../../States/LoginState';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-
-import './styles.css';
-
-// import required modules
-import { EffectCoverflow, Pagination } from 'swiper';
 
 export default function Home() {
   const navigate = useNavigate();
-  const loginInfo = useRecoilValue(LoginState);
 
   return (
     <style.Container>

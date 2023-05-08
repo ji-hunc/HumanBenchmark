@@ -1,4 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+/**********************************
+ * Name : numberMemoryTest.js
+ * Author : Jihun Choi
+ * Introduction : numberMemory 테스트를 위한 페이지
+ ********************************** */
+import { useState, useRef } from 'react';
 import React from 'react';
 import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
@@ -9,7 +14,10 @@ import LoginState from '../../States/LoginState';
 import Ranking from '../../components/Ranking/Ranking';
 
 export default function NumberMemoryTest() {
+  // user 정보 가져오기
   const userInfo = useRecoilValue(LoginState);
+
+  // 게임 진행을 위한 states
   const [question, setQuestion] = useState('');
   const [isTesting, setIsTesting] = useState(false);
   const [isTimeOver, setIsTimeOver] = useState(false);
@@ -19,8 +27,10 @@ export default function NumberMemoryTest() {
   const [isClearLevel, setIsClearLevel] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
+  // 유저로부터 입력값을 받을 input refs
   const input = useRef();
 
+  // 게임 초기화 함수
   const startGame = () => {
     const sequence = getRandomSequence(1);
     setQuestion(sequence);
@@ -31,29 +41,28 @@ export default function NumberMemoryTest() {
     setIsRegistered(false);
   };
 
+  // 유저로부터 input을 받음과 동시에 입력 State 업데이트
   const updateAnswer = (event) => {
     setAnswer(event.target.value);
   };
 
+  // 정답 화인 함수
   const checkAnswer = (event) => {
     if (answer === '') {
       return;
     }
-    console.log(answer);
     if (question === answer) {
       setIsClearLevel(true);
     } else {
-      console.log('wrong answer');
       setIsGameOver(true);
       setIsTimeOver(false);
     }
   };
 
+  // 다음레벨로 가기위해 여러 초기화를 하는 함수
   const goNextLevel = () => {
     setAnswer('');
-    console.log('correct');
     const sequence = getRandomSequence(level + 2);
-    console.log(sequence);
     setQuestion(sequence);
     setIsTimeOver(false);
     setIsClearLevel(false);
@@ -61,6 +70,7 @@ export default function NumberMemoryTest() {
     setLevel((state) => state + 1);
   };
 
+  // 랜덤 숫자 시퀀스를 만드는 함수
   const getRandomSequence = (length) => {
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     let sequence = '';
@@ -72,6 +82,7 @@ export default function NumberMemoryTest() {
     return sequence;
   };
 
+  // 엔터키를 눌렀을 때 처리할 일을 정의하는 함수
   const handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
       checkAnswer(); // Enter 입력이 되면 클릭 이벤트 실행
@@ -92,7 +103,11 @@ export default function NumberMemoryTest() {
 
         {isGameOver ? (
           <div>
-            <AnswerCheck correctAnswer={question} answer={answer} />
+            <AnswerCheck
+              question="Number"
+              correctAnswer={question}
+              answer={answer}
+            />
             <ResultBox
               clickTryAgain={startGame}
               testTitle="NumberMemory Test"

@@ -1,25 +1,34 @@
-import { useRef, useState } from 'react';
+/**********************************
+ * Name : Login.js
+ * Author : Jihun Choi
+ * Introduction : 로그인 페이지
+ ********************************** */
+import { useRef } from 'react';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import * as style from './styles';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoginState from '../../States/LoginState';
 import Api from '../../Api/Api';
 
 export default function Login() {
+  // 페이지 이동을 위한 navigate
   const navigate = useNavigate();
+  // 유저로부터 입력값을 받는 refs
   const userName = useRef();
   const password = useRef();
 
+  // 로그인 상태를 저장할 recoilState
   const setLoginState = useSetRecoilState(LoginState);
 
+  // 엔터키를 눌렀을 때 불러질 함수
   const handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
       requestLogin(); // Enter 입력이 되면 클릭 이벤트 실행
     }
   };
 
+  // Api에 로그인 요청을 POST로 보냄
   const requestLogin = async () => {
     const id = userName.current.value;
     const pw = password.current.value;
@@ -41,7 +50,6 @@ export default function Login() {
         navigate('/');
         window.location.reload();
       } else {
-        console.log(response.data);
       }
     }
   };

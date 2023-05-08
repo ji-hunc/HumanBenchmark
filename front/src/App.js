@@ -1,21 +1,20 @@
-import { React, useState, useEffect } from 'react';
+import { React, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home/home';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ReactionTimeTest from './pages/ReactionTimeTest/reactionTimeTest';
 import SequenceMemoryTest from './pages/SequenceMemoryTest/SequenceMemoryTest';
 import NumberMemoryTest from './pages/NumberMemoryTest/numberMemoryTest';
 import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import Navigation from './components/Navigation/Navigation';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import LoginState from './States/LoginState';
 import AlphabetMemoryTest from './pages/AlphabetMemoryTest/AlphabetMemoryTest';
 
 function App() {
   const setLoginState = useSetRecoilState(LoginState);
-  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const userId = sessionStorage.getItem('userId');
@@ -24,16 +23,12 @@ function App() {
         isLogin: true,
         userId: userId,
       });
-      setUserId(userId);
     } else {
       setLoginState({
         isLogin: true,
         userId: null,
       });
     }
-    const userInfo = sessionStorage.getItem('userId');
-    console.log('userInfo', userInfo);
-    console.log(userInfo === null);
   }, []);
   return (
     <div className="App">
