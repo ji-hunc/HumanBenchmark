@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 // 로컬 테스트용, 실제 배포서버용 api주소
-const reqUrl = 'http://192.168.219.104:8000';
-// const reqUrl = 'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app';
+// const reqUrl = 'http://192.168.219.104:8000';
+const reqUrl = 'https://port-0-humanstats-5x7y2mlh8rjlfi.sel4.cloudtype.app';
 
 export default {
   // POST. 점수 저장 요청 함수
