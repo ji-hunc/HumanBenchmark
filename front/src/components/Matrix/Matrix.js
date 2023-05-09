@@ -80,7 +80,7 @@ export default function Matrix(props) {
   // 각 block을 클릭했을 때 처리하는 함수
   const handleBlockClick = (event, index) => {
     const levelVar = level;
-    if (question[clickCount] != index) {
+    if (question[clickCount] !== index) {
       background.current.style.backgroundColor = wrongAnswerBackgroundColor;
       setTimeout(() => {
         background.current.style.backgroundColor = originalBackgroundColor;
@@ -96,7 +96,7 @@ export default function Matrix(props) {
     setTimeout(() => {
       event.target.style.backgroundColor = originalBlockColor;
     }, 300);
-    if (clickCount == level) {
+    if (clickCount === level) {
       // next level
       setLevel((state) => state + 1);
       setClickCount(0);
