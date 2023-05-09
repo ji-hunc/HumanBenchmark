@@ -3,7 +3,6 @@
 ## 배포 주소
 
 [https://www.humanstats.shop/](https://www.humanstats.shop/)
-[https://www.humanstats.shop/](https://www.humanstats.shop/)
 
 ## 🛠 개발 환경
 
