@@ -5,10 +5,8 @@
  ********************************** */
 import { useState } from 'react';
 import React from 'react';
-import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
 import { useRecoilValue } from 'recoil';
-import Api from '../../Api/Api';
 import LoginState from '../../States/LoginState';
 import Ranking from '../../components/Ranking/Ranking';
 
@@ -24,7 +22,7 @@ export default function ReactionTimeTest() {
   // 결과 시간 기록
   const [result, setResult] = useState('Click to Start!');
   // 테스트 진행 관련
-  const [tryCount, setTrycount] = useState('');
+  const [tryCount, setTrycount] = useState(5);
   const [isTesting, setIsTesting] = useState(false);
   const [isFinishMeasure, setIsFinishMeasure] = useState(null);
   const [totalScoreTime, setTotalScoreTime] = useState(0);
@@ -59,7 +57,7 @@ export default function ReactionTimeTest() {
     setIsFinishMeasure(false);
     setTotalScoreTime(0);
     setCursor('pointer');
-    setResult('click to start!');
+    setResult('Click to start!');
     setIsRegistered(false);
   };
 
@@ -70,7 +68,7 @@ export default function ReactionTimeTest() {
       setCursor('default');
       return;
     }
-    // 테스트가 끌났으면(5회) 초기화 진행
+    // 테스트가 끝났으면(5회) 초기화 진행
     if (!isTesting) {
       initTest();
     }
@@ -106,47 +104,47 @@ export default function ReactionTimeTest() {
 
   return (
     <div>
-      <style.Container
-        style={{ cursor: cursor, backgroundColor: color }}
+      <div
+        className="flex justify-center items-center w-full h-128 cursor-pointer select-none"
+        style={{ backgroundColor: color }}
         onMouseDown={() => handleClick()}
       >
         {colorState === 1 ? (
           // blue 화면일 때
-          <div style={{ color: 'white' }}>
+          <div className="text-white">
             {isFinishMeasure ? (
               <ResultBox
                 clickTryAgain={initTest}
                 testTitle="Reaction Time"
                 testResult={totalScoreTime / 5 + ' ms'}
-                saveScore={() =>
-                  Api.saveScore(
-                    'ReactionTime',
-                    userInfo.userId,
-                    totalScoreTime / 5,
-                    isRegistered,
-                    setIsRegistered,
-                  )
-                }
+                gameName="ReactionTime"
+                score={totalScoreTime / 5}
               />
             ) : (
               <div>
-                <style.MainText>{result}</style.MainText>
+                <label className="flex flex-col justify-center items-center font-medium text-8xl text-white sm:text-4xl">
+                  {result}
+                </label>
                 {isTesting ? (
-                  <style.SubText>
-                    click to continue ({5 - tryCount}/5)
-                  </style.SubText>
+                  <label className="flex justify-center items-center w-full font-light text-4xl text-white sm:text-2xl">
+                    Click to continue ({5 - tryCount}/5)
+                  </label>
                 ) : null}
               </div>
             )}
           </div>
         ) : colorState === 2 ? (
           // red 화면일 떄
-          <style.MainText>Wait for Green ...</style.MainText>
+          <label className="flex flex-col justify-center items-center font-medium text-8xl text-white sm:text-4xl">
+            Wait for Green ...
+          </label>
         ) : (
           // green 화면일 때
-          <style.MainText>Click!</style.MainText>
+          <label className="flex flex-col justify-center items-center font-medium text-8xl text-white sm:text-4xl">
+            Click!
+          </label>
         )}
-      </style.Container>
+      </div>
       <Ranking gameName={'ReactionTime'} />
     </div>
   );

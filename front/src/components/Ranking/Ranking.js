@@ -6,29 +6,32 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import React from 'react';
-import * as style from './styles';
 import RankingRow from './RankingRow';
-import Api from '../../Api/Api';
 
-export default function Ranking(props) {
+export default function Ranking({ gameName }) {
   // Get요청을 통해 받은 정보를 저장할 state
   const [rankData, setRankData] = useState([]);
 
   // 최초 실행시 Api로 랭킹정보를 Get함
   useEffect(() => {
-    // getData();
+    getData();
   }, []);
 
   // Api에 랭킹 정보를 Get하는 함수
   const getData = async () => {
-    const data = await Api.getRanking(props.gameName);
-    setRankData(data);
+    try {
+      const response = await fetch(`/api/rank/${gameName}`);
+      const data = await response.json();
+      setRankData(data);
+    } catch (error) {
+      console.error('Error fetching rank data:', error);
+    }
   };
 
   return (
-    <style.Container>
-      <style.Title>Ranking</style.Title>
-      <style.RowWrapper>
+    <div className="flex flex-col p-8 rounded-md bg-gray-200 text-gray-800">
+      <label className="text-4xl">Ranking</label>
+      <div className="mt-4 flex flex-col items-center">
         <RankingRow rank={'Rank'} userId={'UserName'} score={'Score'} />
         {rankData.map((item, index) => (
           <RankingRow
@@ -38,7 +41,7 @@ export default function Ranking(props) {
             score={item.score}
           />
         ))}
-      </style.RowWrapper>
-    </style.Container>
+      </div>
+    </div>
   );
 }

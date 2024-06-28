@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { useRecoilValue } from 'recoil';
+import LoginState from '../../States/LoginState';
 
 const Navigation = () => {
+  const loginState = useRecoilValue(LoginState);
+  console.log(loginState);
+
   return (
     <nav className="bg-primary p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -20,7 +25,7 @@ const Navigation = () => {
           </li>
           <li>
             <Link href="/login" className="text-white hover:text-gray-300">
-              Login
+              {loginState.isLogin ? 'Logout' : 'Login'}
             </Link>
           </li>
         </ul>

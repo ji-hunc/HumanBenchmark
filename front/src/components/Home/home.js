@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <div
-        className="flex items-center justify-center w-full h-96 bg-primary"
+        className="flex items-center justify-center w-full h-128 bg-primary"
         onClick={() => navigate('/reactiontimetest')}
       >
         <h1 className="text-white text-4xl">Reaction Time</h1>

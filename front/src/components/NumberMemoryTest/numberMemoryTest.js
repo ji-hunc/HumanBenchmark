@@ -5,11 +5,9 @@
  ********************************** */
 import { useState, useRef } from 'react';
 import React from 'react';
-import * as style from './styles';
 import ResultBox from '../../components/ResultBox/ResultBox';
 import AnswerCheck from '../../components/AnswerCheck/AnswerCheck';
 import { useRecoilValue } from 'recoil';
-import Api from '../../Api/Api';
 import LoginState from '../../States/LoginState';
 import Ranking from '../../components/Ranking/Ranking';
 
@@ -47,7 +45,7 @@ export default function NumberMemoryTest() {
   };
 
   // 정답 화인 함수
-  const checkAnswer = (event) => {
+  const checkAnswer = () => {
     if (answer === '') {
       return;
     }
@@ -91,13 +89,15 @@ export default function NumberMemoryTest() {
 
   return (
     <div>
-      <style.Container>
+      <div className="flex flex-col items-center justify-center bg-primary w-full h-128">
         {isTesting ? null : (
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <style.startLabel onClick={startGame}>
+          <div className="flex flex-col items-center">
+            <div
+              className="text-8xl font-medium text-white sm:text-4xl cursor-pointer"
+              onClick={startGame}
+            >
               Click to Start!
-            </style.startLabel>
-            <style.Button onClick={startGame}>Start Game</style.Button>
+            </div>
           </div>
         )}
 
@@ -112,58 +112,55 @@ export default function NumberMemoryTest() {
               clickTryAgain={startGame}
               testTitle="NumberMemory Test"
               testResult={level + ' Level'}
-              saveScore={() =>
-                Api.saveScore(
-                  'NumberMemory',
-                  userInfo.userId,
-                  level,
-                  isRegistered,
-                  setIsRegistered,
-                )
-              }
+              gameName="NumberMemory"
+              score={level}
             />
           </div>
         ) : (
           <div>
             {isClearLevel ? (
               <div>
-                <h1
-                  style={{
-                    fontSize: '80px',
-                    color: 'white',
-                    margin: '0px',
-                    fontWeight: 400,
-                  }}
+                <h1 className="text-8xl text-white m-0 font-light">Correct!</h1>
+                <button
+                  className="text-2xl py-3 px-8 bg-yellow-500 font-bold text-gray-900 rounded-md mt-4 cursor-pointer"
+                  onClick={goNextLevel}
                 >
-                  Correct!
-                </h1>
-                <style.Button onClick={goNextLevel}>Next</style.Button>
+                  Next
+                </button>
               </div>
             ) : (
               <div>
                 {isTimeOver ? (
-                  <style.AnswerForm>
-                    <style.questionLabel>
+                  <div className="flex flex-col items-center">
+                    <div className="text-4xl text-white font-medium mb-8">
                       What was the Numbers?
-                    </style.questionLabel>
-                    <style.Input
+                    </div>
+                    <input
                       type="number"
                       pattern="[0-9]*"
-                      inputmode="numeric"
+                      inputMode="numeric"
                       ref={input}
                       onChange={updateAnswer}
                       onKeyPress={handleOnKeyPress}
+                      className="mb-4 text-white bg-transparent rounded-sm text-center text-6xl outline-none shadow-none border border-gray-400 py-2 px-4"
                     />
-                    <style.Button onClick={checkAnswer}>Submit</style.Button>
-                  </style.AnswerForm>
+                    <button
+                      className="text-2xl py-3 px-8 bg-yellow-500 font-bold text-gray-900 rounded-md mt-4 cursor-pointer"
+                      onClick={checkAnswer}
+                    >
+                      Submit
+                    </button>
+                  </div>
                 ) : (
-                  <style.Question>{question}</style.Question>
+                  <div className="text-8xl text-white sm:text-4xl">
+                    {question}
+                  </div>
                 )}
               </div>
             )}
           </div>
         )}
-      </style.Container>
+      </div>
       <Ranking gameName={'NumberMemory'} />
     </div>
   );

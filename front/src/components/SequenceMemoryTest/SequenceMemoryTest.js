@@ -5,7 +5,6 @@
  ********************************** */
 import { useRef } from 'react';
 import React from 'react';
-import * as style from './styles';
 import Matrix from '../../components/Matrix/Matrix';
 import Ranking from '../../components/Ranking/Ranking';
 
@@ -36,9 +35,12 @@ export default function SequenceMemoryTest() {
 
   return (
     <div>
-      <style.Container ref={background}>
+      <div
+        ref={background}
+        className="flex flex-col items-center justify-center bg-primary w-full h-128"
+      >
         <Matrix background={background} numbers={sequence} />
-      </style.Container>
+      </div>
       <Ranking gameName={'SequenceMemory'} />
     </div>
   );

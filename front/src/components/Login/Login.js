@@ -8,14 +8,16 @@ import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import * as style from './styles';
 import LoginState from '../../States/LoginState';
-import Api from '../../Api/Api';
+import { useRouter } from 'next/router';
 
 export default function Login() {
+  const router = useRouter();
+
   // 유저로부터 입력값을 받는 refs
   const userName = useRef();
   const password = useRef();
 
-  // 로그인 상태를 저장할 recoilState
+  //  로그인 상태를 저장할 recoilState
   const setLoginState = useSetRecoilState(LoginState);
 
   // 엔터키를 눌렀을 때 불러질 함수
@@ -34,18 +36,32 @@ export default function Login() {
       alert('모든 항목을 채워주세요');
       return;
     } else {
-      const response = await Api.requestLogin(id, pw);
-      if (response.data === 'notRegistered' || response.data === 'wrongPW') {
-        alert('등록되지 않은 아이디이거나 비밀번호가 틀렸습니다.');
-      } else if (response.data === 'allow') {
-        alert('로그인 완료');
-        sessionStorage.setItem('userId', id);
-        setLoginState({
-          isLogin: true,
-          userId: id,
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id, pw }),
         });
-        window.location.reload();
-      } else {
+
+        const data = await response.text();
+        if (data === 'notRegistered' || data === 'wrongPW') {
+          alert('등록되지 않은 아이디이거나 비밀번호가 틀렸습니다.');
+        } else if (data === 'allow') {
+          alert('로그인 완료');
+          sessionStorage.setItem('userId', id);
+          setLoginState({
+            isLogin: true,
+            userId: id,
+          });
+          router.push('/');
+        } else {
+          alert('로그인 중 오류가 발생했습니다.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('로그인 중 오류가 발생했습니다.');
       }
     }
   };

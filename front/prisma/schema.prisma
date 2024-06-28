@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(uuid())
+  password    String
+  create_date DateTime
+}
+
+model ReactionTimeRecord {
+  id          Int      @id @default(autoincrement())
+  user_id     String
+  score       Int
+  create_date DateTime
+}
+
+model SequenceMemoryRecord {
+  id          Int      @id @default(autoincrement())
+  user_id     String
+  score       Int
+  create_date DateTime
+}
+
+model NumberMemoryRecord {
+  id          Int      @id @default(autoincrement())
+  user_id     String
+  score       Int
+  create_date DateTime
+}
+
+model AlphabetMemoryRecord {
+  id          Int      @id @default(autoincrement())
+  user_id     String
+  score       Int
+  create_date DateTime
+}

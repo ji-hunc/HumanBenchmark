@@ -4,9 +4,7 @@
  * Introduction : 회원가입 페이지
  ********************************** */
 import { useRef } from 'react';
-import React from 'react';
 import * as style from './styles';
-import Api from '../../Api/Api';
 
 export default function SignUp() {
   // 유저의 입력을 받을 input refs
@@ -31,15 +29,33 @@ export default function SignUp() {
         return;
       } else {
         // Request to server here
-        const response = await Api.requestSignup(id, pw);
-        if (response.data === 'already Exist!') {
-          alert('이미 존재하는 아이디입니다.');
-        } else {
-          alert('성공적으로 등록되었습니다!');
+        try {
+          console.log('body');
+          console.log(id, pw);
+          const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id, pw }),
+          });
+          const data = await response.text();
+          console.log(data);
+          if (data === 'already Exist!') {
+            alert('이미 존재하는 아이디입니다.');
+          } else if (response.ok) {
+            alert('성공적으로 등록되었습니다!');
+          } else {
+            alert('회원가입 중 오류가 발생했습니다.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('회원가입 중 오류가 발생했습니다.');
         }
       }
     }
   };
+
   return (
     <style.Container>
       <style.InnerContainer>

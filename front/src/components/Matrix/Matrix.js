@@ -6,11 +6,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useRef } from 'react';
 import React from 'react';
-import * as style from './styles';
 import ResultBox from '../ResultBox/ResultBox';
 import { useRecoilValue } from 'recoil';
 import LoginState from '../../States/LoginState';
-import Api from '../../Api/Api';
 
 export default function Matrix(props) {
   // user 정보 가져오기
@@ -38,24 +36,27 @@ export default function Matrix(props) {
 
   // ref 넣은 상태로 블럭 컴포넌트 미리 생성
   const row1 = [1, 2, 3].map((index) => (
-    <style.Square
+    <div
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
+      className="border-8 border-gray-300 rounded-md bg-gray-200 w-32 h-32 cursor-pointer"
     />
   ));
   const row2 = [4, 5, 6].map((index) => (
-    <style.Square
+    <div
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
+      className="border-8 border-gray-300 rounded-md bg-gray-200 w-32 h-32 cursor-pointer"
     />
   ));
   const row3 = [7, 8, 9].map((index) => (
-    <style.Square
+    <div
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
+      className="border-8 border-gray-300 rounded-md bg-gray-200 w-32 h-32 cursor-pointer"
     />
   ));
 
@@ -88,8 +89,6 @@ export default function Matrix(props) {
       // game over
       setGameOver(true);
       generateSequence();
-      // alert('Game Over');
-      // TODO GameOver시 처리할 프로세스 작성해야함
       return;
     }
     event.target.style.backgroundColor = pickBlockColor;
@@ -140,44 +139,37 @@ export default function Matrix(props) {
   };
 
   return (
-    <style.Container>
+    <div className="flex w-full justify-center items-center">
       {gameOver ? (
         <ResultBox
           testTitle="SqeuenceTest"
           testResult={level + ' Level'}
           clickTryAgain={initTest}
-          saveScore={() =>
-            Api.saveScore(
-              'SequenceMemory',
-              userInfo.userId,
-              level,
-              isRegistered,
-              setIsRegistered,
-            )
-          }
+          gameName="SequenceMemory"
+          score={level}
         />
       ) : isTesting ? (
-        <style.Squares ref={squares}>
-          <h1 style={{ color: '#ffffff', margin: '0px' }}>
-            LEVEL {level + 1}{' '}
-          </h1>
+        <div
+          ref={squares}
+          className="max-w-md w-full flex flex-col justify-center gap-4"
+        >
+          <h1 className="text-white m-0">LEVEL {level + 1} </h1>
 
-          <style.SquareRow>{row1}</style.SquareRow>
-          <style.SquareRow>{row2}</style.SquareRow>
-          <style.SquareRow>{row3}</style.SquareRow>
-        </style.Squares>
+          <div className="flex flex-row justify-center gap-4">{row1}</div>
+          <div className="flex flex-row justify-center gap-4">{row2}</div>
+          <div className="flex flex-row justify-center gap-4">{row3}</div>
+        </div>
       ) : (
-        <style.startLabel
-          style={{ cursor: 'pointer' }}
+        <div
+          className="items-center text-8xl font-medium text-white flex flex-col justify-center w-full h-full cursor-pointer sm:text-4xl"
           onClick={() => {
             setIsTesting(true);
-            // 그려지기 전에 불러서 style 관련 에러 뜸
             setTimeout(() => startGame(0), 500);
           }}
         >
           Click to Start!
-        </style.startLabel>
+        </div>
       )}
-    </style.Container>
+    </div>
   );
 }
