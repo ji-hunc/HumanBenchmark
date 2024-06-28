@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
-import { RecoilRoot, useSetRecoilState } from 'recoil';
+import { RecoilRoot } from 'recoil';
 import LoginState from '../States/LoginState';
 import '../styles/globals.css';
 import Navigation from '../components/Navigation/Navigation';
