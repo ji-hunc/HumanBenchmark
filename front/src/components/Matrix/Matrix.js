@@ -40,7 +40,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 rounded-md cursor-pointer"
+      className="bg-gray-200 border-gray-300 rounded-md cursor-pointer 4xl:w-32 4xl:h-32 2xl:w-32 2xl:h-32 xs:w-24 xs:h-24"
     />
   ));
   const row2 = [4, 5, 6].map((index) => (
@@ -48,7 +48,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 rounded-md cursor-pointer"
+      className="bg-gray-200 border-gray-300 rounded-md cursor-pointer 4xl:w-32 4xl:h-32 2xl:w-32 2xl:h-32 xs:w-24 xs:h-24"
     />
   ));
   const row3 = [7, 8, 9].map((index) => (
@@ -56,7 +56,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 rounded-md cursor-pointer"
+      className="bg-gray-200 border-gray-300 rounded-md cursor-pointer 4xl:w-32 4xl:h-32 2xl:w-32 2xl:h-32 xs:w-24 xs:h-24"
     />
   ));
 
@@ -153,7 +153,9 @@ export default function Matrix(props) {
           ref={squares}
           className="flex flex-col justify-center w-full max-w-md gap-4"
         >
-          <h1 className="m-0 text-white">LEVEL {level + 1} </h1>
+          <h1 className="m-0 text-center text-white 4xl:text-3xl 2xl:text-3xl xs:text-2xl">
+            LEVEL {level + 1}{' '}
+          </h1>
 
           <div className="flex flex-row justify-center gap-4">{row1}</div>
           <div className="flex flex-row justify-center gap-4">{row2}</div>
