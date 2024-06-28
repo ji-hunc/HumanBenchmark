@@ -1,56 +1,32 @@
-/**********************************
- * Name : Navigation.js
- * Author : Jihun Choi
- * Introduction : Navigation 바. Title, login, logout. signup으로의 navigate 포함
- ********************************** */
-import React from 'react';
-import * as style from './styles';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import LoginState from '../../States/LoginState';
+import Link from 'next/link';
 
-export default function Navigation(props) {
-  // user 정보 가져오기
-  const loginInfo = useRecoilValue(LoginState);
-
-  // 화면 이동을 위한 navigate
-  const navigate = useNavigate();
-
-  // 로그아웃을 위한 함수. sessionStorage 초기화
-  const logOut = () => {
-    sessionStorage.clear();
-    window.location.reload();
-  };
-
+const Navigation = () => {
   return (
-    <style.Container>
-      <style.TitleWrapper>
-        <style.Title
-          onClick={() => {
-            navigate('/');
-            window.location.reload();
-          }}
-        >
-          Human Stats
-        </style.Title>
-      </style.TitleWrapper>
-      <style.ButtonWrapper>
-        {loginInfo.userId ? (
-          <div style={{ display: 'flex', alignItems: 'baseline' }}>
-            <style.LoginButton>{loginInfo.userId}</style.LoginButton>
-            <style.LoginButton onClick={logOut}>Logout</style.LoginButton>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', alignItems: 'baseline' }}>
-            <style.LoginButton onClick={() => navigate('/login')}>
-              Login
-            </style.LoginButton>
-            <style.SignUpButton onClick={() => navigate('/signup')}>
+    <nav className="bg-primary p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <div>
+          <Link
+            href="/"
+            className="text-white text-xl font-bold hover:text-gray-300"
+          >
+            HumanStats
+          </Link>
+        </div>
+        <ul className="flex space-x-4">
+          <li>
+            <Link href="/signup" className="text-white hover:text-gray-300">
               Sign Up
-            </style.SignUpButton>
-          </div>
-        )}
-      </style.ButtonWrapper>
-    </style.Container>
+            </Link>
+          </li>
+          <li>
+            <Link href="/login" className="text-white hover:text-gray-300">
+              Login
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
-}
+};
+
+export default Navigation;
