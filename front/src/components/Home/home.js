@@ -19,30 +19,30 @@ export default function Home() {
         className="flex items-center justify-center w-full h-128 bg-primary"
         onClick={() => navigate('/reactiontimetest')}
       >
-        <h1 className="text-white text-4xl">Reaction Time</h1>
+        <h1 className="text-4xl text-white">Reaction Time</h1>
       </div>
-      <h1 className="text-2xl mt-8">Other Games</h1>
+      <h1 className="mt-8 text-2xl">Other Games</h1>
       <div className="flex flex-wrap justify-center mt-4">
         <div
-          className="bg-white rounded-lg shadow-lg m-2 p-4 cursor-pointer transform transition-transform hover:scale-105"
+          className="p-4 m-2 bg-white rounded-lg shadow-lg cursor-pointer transform transition-transform hover:scale-105"
           onClick={() => navigate('/reactiontimetest')}
         >
           <h2 className="text-xl text-gray-800">Reaction Time</h2>
         </div>
         <div
-          className="bg-white rounded-lg shadow-lg m-2 p-4 cursor-pointer transform transition-transform hover:scale-105"
+          className="p-4 m-2 bg-white rounded-lg shadow-lg cursor-pointer transform transition-transform hover:scale-105"
           onClick={() => navigate('/sequencememorytest')}
         >
           <h2 className="text-xl text-gray-800">Sequence Memory</h2>
         </div>
         <div
-          className="bg-white rounded-lg shadow-lg m-2 p-4 cursor-pointer transform transition-transform hover:scale-105"
+          className="p-4 m-2 bg-white rounded-lg shadow-lg cursor-pointer transform transition-transform hover:scale-105"
           onClick={() => navigate('/numbermemorytest')}
         >
           <h2 className="text-xl text-gray-800">Number Memory</h2>
         </div>
         <div
-          className="bg-white rounded-lg shadow-lg m-2 p-4 cursor-pointer transform transition-transform hover:scale-105"
+          className="p-4 m-2 bg-white rounded-lg shadow-lg cursor-pointer transform transition-transform hover:scale-105"
           onClick={() => navigate('/alphabetmemorytest')}
         >
           <h2 className="text-xl text-gray-800">Alphabet Memory</h2>

@@ -29,9 +29,9 @@ export default function Ranking({ gameName }) {
   };
 
   return (
-    <div className="flex flex-col p-8 rounded-md bg-gray-200 text-gray-800">
+    <div className="flex flex-col p-8 text-gray-800 bg-gray-200 rounded-md">
       <label className="text-4xl">Ranking</label>
-      <div className="mt-4 flex flex-col items-center">
+      <div className="flex flex-col items-center mt-4">
         <RankingRow rank={'Rank'} userId={'UserName'} score={'Score'} />
         {rankData.map((item, index) => (
           <RankingRow

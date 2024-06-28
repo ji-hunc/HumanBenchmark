@@ -2,6 +2,8 @@
 
 /front/.env
 /front/.next/
+front/.next/
+/.next
 
 
 # dependencies

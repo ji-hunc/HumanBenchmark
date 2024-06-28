@@ -7,12 +7,12 @@ const Navigation = () => {
   console.log(loginState);
 
   return (
-    <nav className="bg-primary p-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="p-4 bg-primary">
+      <div className="flex items-center justify-between mx-8">
         <div>
           <Link
             href="/"
-            className="text-white text-xl font-bold hover:text-gray-300"
+            className="text-xl font-bold text-white hover:text-gray-300"
           >
             HumanStats
           </Link>

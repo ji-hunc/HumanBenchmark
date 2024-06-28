@@ -105,7 +105,7 @@ export default function ReactionTimeTest() {
   return (
     <div>
       <div
-        className="flex justify-center items-center w-full h-128 cursor-pointer select-none"
+        className="flex items-center justify-center w-full cursor-pointer select-none h-128"
         style={{ backgroundColor: color }}
         onMouseDown={() => handleClick()}
       >
@@ -122,11 +122,11 @@ export default function ReactionTimeTest() {
               />
             ) : (
               <div>
-                <label className="flex flex-col justify-center items-center font-medium text-8xl text-white sm:text-4xl">
+                <label className="flex flex-col items-center justify-center font-medium text-white text-8xl sm:text-4xl">
                   {result}
                 </label>
                 {isTesting ? (
-                  <label className="flex justify-center items-center w-full font-light text-4xl text-white sm:text-2xl">
+                  <label className="flex items-center justify-center w-full text-4xl font-light text-white sm:text-2xl">
                     Click to continue ({5 - tryCount}/5)
                   </label>
                 ) : null}
@@ -135,12 +135,12 @@ export default function ReactionTimeTest() {
           </div>
         ) : colorState === 2 ? (
           // red 화면일 떄
-          <label className="flex flex-col justify-center items-center font-medium text-8xl text-white sm:text-4xl">
+          <label className="flex flex-col items-center justify-center font-medium text-white text-8xl sm:text-4xl">
             Wait for Green ...
           </label>
         ) : (
           // green 화면일 때
-          <label className="flex flex-col justify-center items-center font-medium text-8xl text-white sm:text-4xl">
+          <label className="flex flex-col items-center justify-center font-medium text-white text-8xl sm:text-4xl">
             Click!
           </label>
         )}

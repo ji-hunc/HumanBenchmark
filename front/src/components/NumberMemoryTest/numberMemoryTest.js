@@ -89,11 +89,11 @@ export default function NumberMemoryTest() {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center bg-primary w-full h-128">
+      <div className="flex flex-col items-center justify-center w-full bg-primary h-128">
         {isTesting ? null : (
           <div className="flex flex-col items-center">
             <div
-              className="text-8xl font-medium text-white sm:text-4xl cursor-pointer"
+              className="font-medium text-white cursor-pointer text-8xl sm:text-4xl"
               onClick={startGame}
             >
               Click to Start!
@@ -120,9 +120,9 @@ export default function NumberMemoryTest() {
           <div>
             {isClearLevel ? (
               <div>
-                <h1 className="text-8xl text-white m-0 font-light">Correct!</h1>
+                <h1 className="m-0 font-light text-white text-8xl">Correct!</h1>
                 <button
-                  className="text-2xl py-3 px-8 bg-yellow-500 font-bold text-gray-900 rounded-md mt-4 cursor-pointer"
+                  className="px-8 py-3 mt-4 text-2xl font-bold text-gray-900 bg-yellow-500 cursor-pointer rounded-md"
                   onClick={goNextLevel}
                 >
                   Next
@@ -132,7 +132,7 @@ export default function NumberMemoryTest() {
               <div>
                 {isTimeOver ? (
                   <div className="flex flex-col items-center">
-                    <div className="text-4xl text-white font-medium mb-8">
+                    <div className="mb-8 text-4xl font-medium text-white">
                       What was the Numbers?
                     </div>
                     <input
@@ -142,17 +142,17 @@ export default function NumberMemoryTest() {
                       ref={input}
                       onChange={updateAnswer}
                       onKeyPress={handleOnKeyPress}
-                      className="mb-4 text-white bg-transparent rounded-sm text-center text-6xl outline-none shadow-none border border-gray-400 py-2 px-4"
+                      className="px-4 py-2 mb-4 text-6xl text-center text-white bg-transparent border border-gray-400 rounded-sm shadow-none outline-none"
                     />
                     <button
-                      className="text-2xl py-3 px-8 bg-yellow-500 font-bold text-gray-900 rounded-md mt-4 cursor-pointer"
+                      className="px-8 py-3 mt-4 text-2xl font-bold text-gray-900 bg-yellow-500 cursor-pointer rounded-md"
                       onClick={checkAnswer}
                     >
                       Submit
                     </button>
                   </div>
                 ) : (
-                  <div className="text-8xl text-white sm:text-4xl">
+                  <div className="text-white text-8xl sm:text-4xl">
                     {question}
                   </div>
                 )}

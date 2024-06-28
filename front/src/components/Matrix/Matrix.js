@@ -40,7 +40,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="border-8 border-gray-300 rounded-md bg-gray-200 w-32 h-32 cursor-pointer"
+      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 cursor-pointer rounded-md"
     />
   ));
   const row2 = [4, 5, 6].map((index) => (
@@ -48,7 +48,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="border-8 border-gray-300 rounded-md bg-gray-200 w-32 h-32 cursor-pointer"
+      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 cursor-pointer rounded-md"
     />
   ));
   const row3 = [7, 8, 9].map((index) => (
@@ -56,7 +56,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="border-8 border-gray-300 rounded-md bg-gray-200 w-32 h-32 cursor-pointer"
+      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 cursor-pointer rounded-md"
     />
   ));
 
@@ -139,7 +139,7 @@ export default function Matrix(props) {
   };
 
   return (
-    <div className="flex w-full justify-center items-center">
+    <div className="flex items-center justify-center w-full">
       {gameOver ? (
         <ResultBox
           testTitle="SqeuenceTest"
@@ -151,9 +151,9 @@ export default function Matrix(props) {
       ) : isTesting ? (
         <div
           ref={squares}
-          className="max-w-md w-full flex flex-col justify-center gap-4"
+          className="flex flex-col justify-center w-full max-w-md gap-4"
         >
-          <h1 className="text-white m-0">LEVEL {level + 1} </h1>
+          <h1 className="m-0 text-white">LEVEL {level + 1} </h1>
 
           <div className="flex flex-row justify-center gap-4">{row1}</div>
           <div className="flex flex-row justify-center gap-4">{row2}</div>
@@ -161,7 +161,7 @@ export default function Matrix(props) {
         </div>
       ) : (
         <div
-          className="items-center text-8xl font-medium text-white flex flex-col justify-center w-full h-full cursor-pointer sm:text-4xl"
+          className="flex flex-col items-center justify-center w-full h-full font-medium text-white cursor-pointer text-8xl sm:text-4xl"
           onClick={() => {
             setIsTesting(true);
             setTimeout(() => startGame(0), 500);

@@ -1,9 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/sequencememorytest": "pages/sequencememorytest.js",
-  "/api/rank/[gameName]": "pages/api/rank/[gameName].js",
-  "/": "pages/index.js",
-  "/reactiontimetest": "pages/reactiontimetest.js"
-}

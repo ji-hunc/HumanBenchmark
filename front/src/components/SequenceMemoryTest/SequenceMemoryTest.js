@@ -37,7 +37,7 @@ export default function SequenceMemoryTest() {
     <div>
       <div
         ref={background}
-        className="flex flex-col items-center justify-center bg-primary w-full h-128"
+        className="flex flex-col items-center justify-center w-full bg-primary h-128"
       >
         <Matrix background={background} numbers={sequence} />
       </div>
