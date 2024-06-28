@@ -1,14 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/front/.env
-/front/.next/
-front/.next/
 /.next
-
+.env
 
 # dependencies
-/front/node_modules
-/server/node_modules
+node_modules
 /.pnp
 .pnp.js
 
