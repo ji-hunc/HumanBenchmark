@@ -16,7 +16,7 @@ export default function Ranking(props) {
 
   // 최초 실행시 Api로 랭킹정보를 Get함
   useEffect(() => {
-    getData();
+    // getData();
   }, []);
 
   // Api에 랭킹 정보를 Get하는 함수
