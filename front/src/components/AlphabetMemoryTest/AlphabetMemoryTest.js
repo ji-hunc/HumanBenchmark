@@ -121,7 +121,7 @@ export default function AlphabetMemoryTest() {
         {isTesting ? null : (
           <div className="flex flex-col items-center">
             <div
-              className="font-medium text-white cursor-pointer text-8xl sm:text-4xl"
+              className="font-medium text-white cursor-pointer 4xl:text-8xl 2xl:text-8xl xs:text-4xl"
               onClick={startGame}
             >
               Click to Start!
@@ -150,7 +150,7 @@ export default function AlphabetMemoryTest() {
               <div className="flex flex-col items-center">
                 <h1 className="m-0 font-light text-white text-8xl">Correct!</h1>
                 <button
-                  className="px-8 py-3 mt-4 text-2xl font-bold text-gray-900 bg-yellow-500 cursor-pointer rounded-md"
+                  className="px-8 py-3 mt-4 text-2xl font-bold text-gray-900 bg-yellow-500 rounded-md cursor-pointer"
                   onClick={goNextLevel}
                 >
                   Next
@@ -170,7 +170,7 @@ export default function AlphabetMemoryTest() {
                       className="px-4 py-2 mb-4 text-6xl text-center text-white bg-transparent border border-gray-400 rounded-sm shadow-none outline-none"
                     />
                     <button
-                      className="px-8 py-3 mt-4 text-2xl font-bold text-gray-900 bg-yellow-500 cursor-pointer rounded-md"
+                      className="px-8 py-3 mt-4 text-2xl font-bold text-gray-900 bg-yellow-500 rounded-md cursor-pointer"
                       onClick={checkAnswer}
                     >
                       Submit

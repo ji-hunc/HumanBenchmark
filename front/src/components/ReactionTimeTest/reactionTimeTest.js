@@ -122,11 +122,11 @@ export default function ReactionTimeTest() {
               />
             ) : (
               <div>
-                <label className="flex flex-col items-center justify-center font-medium text-white text-8xl sm:text-4xl">
+                <label className="flex flex-col items-center justify-center font-medium text-white 4xl:text-8xl 2xl:text-8xl xs:text-4xl">
                   {result}
                 </label>
                 {isTesting ? (
-                  <label className="flex items-center justify-center w-full text-4xl font-light text-white sm:text-2xl">
+                  <label className="flex items-center justify-center w-full mt-2 text-4xl font-light text-white 4xl:text-3xl 2xl:text-3xl xs:text-2xl">
                     Click to continue ({5 - tryCount}/5)
                   </label>
                 ) : null}
@@ -135,12 +135,12 @@ export default function ReactionTimeTest() {
           </div>
         ) : colorState === 2 ? (
           // red 화면일 떄
-          <label className="flex flex-col items-center justify-center font-medium text-white text-8xl sm:text-4xl">
+          <label className="flex flex-col items-center justify-center font-medium text-white 4xl:text-8xl 2xl:text-6xl xs:text-4xl">
             Wait for Green ...
           </label>
         ) : (
           // green 화면일 때
-          <label className="flex flex-col items-center justify-center font-medium text-white text-8xl sm:text-4xl">
+          <label className="flex flex-col items-center justify-center font-medium text-white 4xl:text-8xl 2xl:text-6xl xs:text-4xl">
             Click!
           </label>
         )}

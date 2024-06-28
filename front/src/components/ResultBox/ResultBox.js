@@ -5,7 +5,6 @@
  ********************************** */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import * as style from './styles';
 import { useRecoilValue } from 'recoil';
 import LoginState from '../../States/LoginState';
 
@@ -38,21 +37,28 @@ export default function ResultBox(props) {
   };
 
   return (
-    <style.Container>
-      <style.TestTitle>{props.testTitle}</style.TestTitle>
-      <style.TestResult>{props.testResult}</style.TestResult>
-      <style.InfoText>register your score</style.InfoText>
-      <style.ButtonBox>
-        <style.Button onClick={saveScore} background="rgb(255, 213, 97)">
+    <div className="flex flex-col items-center text-white">
+      <label className="font-normal 4xl:text-4xl 2xl:text-4xl xs:text-2xl">
+        {props.testTitle}
+      </label>
+      <label className="mt-4 font-normal 4xl:text-8xl 2xl:text-8xl xs:text-6xl">
+        {props.testResult}
+      </label>
+      <label className="mt-8 text-lg font-normal">register your score</label>
+      <div className="flex flex-row justify-center gap-2.5 mt-2.5">
+        <button
+          onClick={saveScore}
+          className="font-semibold text-gray-800 bg-yellow-300 border-none rounded-lg cursor-pointer 4xl:text-xl 4xl:px-8 4xl:py-3 2xl:text-xl 2xl:px-8 2xl:py-3 xs:text-lg xs:px-6 xs:py-2"
+        >
           Save score
-        </style.Button>
-        <style.Button
+        </button>
+        <button
           onClick={props.clickTryAgain}
-          background="rgb(217, 217, 217)"
+          className="px-8 py-3 text-xl font-semibold text-gray-800 bg-gray-300 border-none rounded-lg cursor-pointer 4xl:text-xl 4xl:px-8 4xl:py-3 2xl:text-xl 2xl:px-8 2xl:py-3 xs:text-lg xs:px-6 xs:py-2"
         >
           Try again
-        </style.Button>
-      </style.ButtonBox>
-    </style.Container>
+        </button>
+      </div>
+    </div>
   );
 }

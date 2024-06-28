@@ -30,8 +30,8 @@ export default function Ranking({ gameName }) {
 
   return (
     <div className="flex flex-col p-8 text-gray-800 bg-gray-200 rounded-md">
-      <label className="text-4xl">Ranking</label>
-      <div className="flex flex-col items-center mt-4">
+      <label className="text-4xl text-center">Ranking</label>
+      <div className="flex flex-col items-center w-full mt-8">
         <RankingRow rank={'Rank'} userId={'UserName'} score={'Score'} />
         {rankData.map((item, index) => (
           <RankingRow

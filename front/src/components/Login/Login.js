@@ -6,7 +6,6 @@
 import { useRef } from 'react';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
-import * as style from './styles';
 import LoginState from '../../States/LoginState';
 import { useRouter } from 'next/router';
 
@@ -67,24 +66,38 @@ export default function Login() {
   };
 
   return (
-    <style.Container>
-      <style.InnerContainer>
-        <style.Title>Login</style.Title>
-        <style.InputWrapper>
-          <style.Input
+    <div
+      className="flex flex-col items-center w-full bg-primary"
+      style={{ height: 'calc(100vh - var(--nav-height))' }}
+    >
+      <div className="flex flex-col justify-start w-11/12 max-w-xl">
+        <label className="w-full my-12 font-light text-center text-white 4xl:text-6xl 2xl:text-6xl xs:text-4xl">
+          Login
+        </label>
+        <div className="flex flex-col items-start justify-start gap-1">
+          <input
             placeholder="User Name"
             onKeyPress={handleOnKeyPress}
             ref={userName}
+            className="w-full h-12 p-2 text-base border border-gray-400 rounded-lg"
           />
-          <style.Input
+          <input
             placeholder="Password"
             onKeyPress={handleOnKeyPress}
             type="password"
             ref={password}
+            className="w-full h-12 p-2 text-base border border-gray-400 rounded-lg"
           />
-        </style.InputWrapper>
-        <style.SignUpButton onClick={requestLogin}>Login</style.SignUpButton>
-      </style.InnerContainer>
-    </style.Container>
+        </div>
+        <button
+          onClick={requestLogin}
+          className="w-full p-3 mt-5 text-center text-white bg-teal-600 rounded-lg cursor-pointer"
+        >
+          <label className="text-center 4xl:text-2xl 2xl:text-2xl xs:text-xl">
+            Login
+          </label>
+        </button>
+      </div>
+    </div>
   );
 }

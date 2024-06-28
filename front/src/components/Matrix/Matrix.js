@@ -40,7 +40,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 cursor-pointer rounded-md"
+      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 rounded-md cursor-pointer"
     />
   ));
   const row2 = [4, 5, 6].map((index) => (
@@ -48,7 +48,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 cursor-pointer rounded-md"
+      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 rounded-md cursor-pointer"
     />
   ));
   const row3 = [7, 8, 9].map((index) => (
@@ -56,7 +56,7 @@ export default function Matrix(props) {
       key={index}
       onClick={(event) => handleBlockClick(event, index)}
       ref={(el) => (blockRefs.current[index] = el)}
-      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 cursor-pointer rounded-md"
+      className="w-32 h-32 bg-gray-200 border-8 border-gray-300 rounded-md cursor-pointer"
     />
   ));
 
@@ -161,7 +161,7 @@ export default function Matrix(props) {
         </div>
       ) : (
         <div
-          className="flex flex-col items-center justify-center w-full h-full font-medium text-white cursor-pointer text-8xl sm:text-4xl"
+          className="flex flex-col items-center justify-center w-full h-full font-medium text-white cursor-pointer 4xl:text-8xl 2xl:text-8xl xs:text-4xl"
           onClick={() => {
             setIsTesting(true);
             setTimeout(() => startGame(0), 500);

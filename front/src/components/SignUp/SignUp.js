@@ -4,7 +4,6 @@
  * Introduction : 회원가입 페이지
  ********************************** */
 import { useRef } from 'react';
-import * as style from './styles';
 
 export default function SignUp() {
   // 유저의 입력을 받을 input refs
@@ -57,20 +56,40 @@ export default function SignUp() {
   };
 
   return (
-    <style.Container>
-      <style.InnerContainer>
-        <style.Title>Sign Up</style.Title>
-        <style.InputWrapper>
-          <style.Input placeholder="User Name" ref={userName} />
-          <style.Input placeholder="Password" type="password" ref={password} />
-          <style.Input
+    <div
+      className="flex flex-col items-center w-full bg-primary"
+      style={{ height: 'calc(100vh - var(--nav-height))' }}
+    >
+      <div className="flex flex-col justify-start w-11/12 max-w-xl">
+        <label className="w-full my-12 font-light text-center text-white 4xl:text-6xl 2xl:text-6xl xs:text-4xl">
+          Sign Up
+        </label>
+        <div className="flex flex-col items-start justify-start gap-1">
+          <input
+            placeholder="User Name"
+            ref={userName}
+            className="w-full h-12 p-2 text-base border border-gray-400 rounded-lg"
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            ref={password}
+            className="w-full h-12 p-2 text-base border border-gray-400 rounded-lg"
+          />
+          <input
             placeholder="PasswordConfirm"
             type="password"
             ref={passwordConfirm}
+            className="w-full h-12 p-2 text-base border border-gray-400 rounded-lg"
           />
-        </style.InputWrapper>
-        <style.SignUpButton onClick={requestSignup}>Sign Up</style.SignUpButton>
-      </style.InnerContainer>
-    </style.Container>
+        </div>
+        <button
+          onClick={requestSignup}
+          className="w-full p-3 mt-5 text-2xl text-white bg-teal-600 rounded-lg cursor-pointer h-15 sm:h-12 sm:text-lg"
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
   );
 }

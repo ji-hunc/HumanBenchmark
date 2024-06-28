@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return (
     <nav className="p-4 bg-primary">
-      <div className="flex items-center justify-between mx-8">
+      <div className="flex items-center justify-between 4xl:mx-6 2xl:mx-4 xs:mx-2">
         <div>
           <Link
             href="/"
