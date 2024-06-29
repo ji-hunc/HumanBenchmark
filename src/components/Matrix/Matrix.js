@@ -81,7 +81,7 @@ export default function Matrix(props) {
   // 각 block을 클릭했을 때 처리하는 함수
   const handleBlockClick = (event, index) => {
     const levelVar = level;
-    if (question[clickCount] !== index) {
+    if (question[clickCount] != index) {
       background.current.style.backgroundColor = wrongAnswerBackgroundColor;
       setTimeout(() => {
         background.current.style.backgroundColor = originalBackgroundColor;
@@ -95,7 +95,7 @@ export default function Matrix(props) {
     setTimeout(() => {
       event.target.style.backgroundColor = originalBlockColor;
     }, 300);
-    if (clickCount === level) {
+    if (clickCount == level) {
       // next level
       setLevel((state) => state + 1);
       setClickCount(0);
@@ -154,7 +154,7 @@ export default function Matrix(props) {
           className="flex flex-col justify-center w-full max-w-md gap-4"
         >
           <h1 className="m-0 text-center text-white 4xl:text-3xl 2xl:text-3xl xs:text-2xl">
-            LEVEL {level + 1}{' '}
+            LEVEL {level + 1}
           </h1>
 
           <div className="flex flex-row justify-center gap-4">{row1}</div>
